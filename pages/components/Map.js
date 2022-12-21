@@ -1,0 +1,258 @@
+
+import { useState, useEffect } from "react";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMapEvents,
+  LayersControl,
+  GeoJSON,
+  WMSTileLayer,
+} from "react-leaflet" 
+import "esri-leaflet";
+import "leaflet/dist/leaflet.css";
+import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
+import "leaflet-defaulticon-compatibility";
+import SPF from "../../public/data/Station_Point_Final.json";
+import GOV from "../../public/data/Governorate.json";
+import AREA from "../../public/data/MyArea.json";
+import CONSTRUCTION from "../../public/data/Construction_projects.json";
+import { map, marker, popup, CircleMarker } from "leaflet";
+import VectorTileLayerUmdMin from "leaflet-vector-tile-layer";
+import EsriLeafletGeoSearch from "react-esri-leaflet/plugins/EsriLeafletGeoSearch";
+import useSupercluster from "use-supercluster";
+import { markerClusterGroup } from "leaflet";
+import MarkerClusterGroup from "react-leaflet-markercluster";
+import VectorTileLayer from "react-esri-leaflet/plugins/VectorTileLayer";
+import VectorBasemapLayer from "react-esri-leaflet/plugins/VectorBasemapLayer";
+
+const mbUrl3 =
+  "https://tiles.arcgis.com/tiles/2zwTmDUxTzTVBytU/arcgis/rest/services/KuwaitFinder3Basemap/VectorTileServer?f=jsapi&cacheKey=9919458153afac15";
+const apiKey =
+  "AAPK1f12d3f9f7e0446b97bd5fad297b62dfNs64weAwjHl0BHUdtKX9GisBgUj4312WkhiIHfzTuTes26tENgAO6tBOGEErF-0r";
+const basemapEnum = "ArcGIS:Streets";
+
+
+var wmsLayerString =
+  "Sample_Data:Connection_File,Sample_Data:Station_Buildings,Sample_Data:Pipe_Line,Sample_Data:House_Pipe,Sample_Data:House_connection,Sample_Data:Manhole_Final,Sample_Data:Construction_projects_Poly,Sample_Data:Governorate,Sample_Data:Gov_Polyline,Sample_Data:Area,Sample_Data:FlowDirectionFinal";
+
+// component
+export default function Map({
+  govzone,
+  areazone,
+  areazone1,
+  govzone1,
+  projectCoordinated,
+  projectCoordinated1,
+  projectDescription,
+  projectName,
+  projectPosition,
+  setprojectPosition,
+  construction,
+}) {
+
+
+  var greenIcon = L.icon({
+    iconUrl: "https://i.imgur.com/ld3rkCP.png",
+    iconSize: [70, 70], 
+    iconAnchor: [22, 94], 
+    popupAnchor: [0, -100], 
+  });
+
+
+  function onEachConstruction(construction, layer) {
+    const COProjectName = construction.properties.co_name_eng;
+    const COProjectDescription = construction.properties.description_eng;
+    const COProjectImage1 =
+      "https://geo1.esmrts.com/image/" + construction.properties.image1;
+    const COProjectImage2 =
+      "https://geo1.esmrts.com/image/" + construction.properties.image2;
+    const COProjectImage3 =
+      "https://geo1.esmrts.com/image/" + construction.properties.image3;
+    const COProjectImage4 =
+      "https://geo1.esmrts.com/image/" + construction.properties.image4;
+    const CoXY = construction.properties.coordinates;
+
+    layer.bindPopup(
+      `
+      <div style=" width:100%"><img src=${COProjectImage1} style="text-align: center; height="100px" width="200px"/></div>
+      ` +
+        "<br></br><strong>Project Name</strong><br></br>" +
+        COProjectName +
+        "<br></br> " +
+        "<strong>Project Description</strong><br></br>" +
+        COProjectDescription
+    );
+  }
+
+  function onEachSPF(spf, layer) {
+    const SPFProjectName = spf.properties.st_name_eng;
+    const COProjectDescription = spf.properties.description_eng;
+    const COProjectImage1 =
+      "https://geo1.esmrts.com/image/" + spf.properties.image1;
+    const COProjectImage2 =
+      "https://geo1.esmrts.com/image/" + spf.properties.image2;
+    const COProjectImage3 =
+      "https://geo1.esmrts.com/image/" + spf.properties.image3;
+    const COProjectImage4 =
+      "https://geo1.esmrts.com/image/" + spf.properties.image4;
+    layer.bindPopup(
+      `
+      <div style={{
+        width: '100%',
+        height: '100%',
+      }}></div>
+      ` +
+        "<br></br><strong>Project Name</strong><br></br>" +
+        SPFProjectName +
+        "<br></br>" +
+        "<strong>Project Description</strong> <br></br>" +
+        COProjectDescription
+    );
+  }
+
+  function LocationMarker() {
+    const [position, setPosition] = useState(null);
+
+    const map = useMapEvents({
+      locationfound(e) {
+        setPosition(e.latlng);
+        map.flyTo(e.latlng, map.getZoom());
+      },
+    });
+
+    useEffect(() => {
+      map.flyTo([areazone, areazone1], map.getZoom());
+      setPosition([areazone, areazone1]);
+      if (projectPosition === true) {
+        setPosition([projectCoordinated, projectCoordinated1]);
+        map.flyTo([projectCoordinated, projectCoordinated1], map.getZoom());
+      }
+    }, [projectCoordinated]);
+
+
+
+    return position === null ? null : (
+      <>
+        <Marker position={position} icon={greenIcon}>
+          <Popup>
+            <h1 className="font-bold mt-5">Project Name:</h1>
+            <p>{projectName}</p>
+            <hr />
+            <h1 className="font-bold mt-5">Project Description: </h1>
+            <p>{projectDescription}</p>
+          </Popup>
+        </Marker>
+      </>
+    );
+  }
+
+  const markers = L.markerClusterGroup();
+  var constructionIcon = L.icon({
+    iconUrl: "https://i.imgur.com/jR1ZGvi.png",
+    iconSize: [30, 30], 
+    iconAnchor: [22, 94], 
+    popupAnchor: [0, -100], 
+  });
+  var stationIcon = L.icon({
+    iconUrl: "https://i.imgur.com/4LWG8pQ.png",
+    iconSize: [30, 30], 
+    iconAnchor: [22, 94],
+    popupAnchor: [0, -100], 
+  });
+  function createMarker(feature, latlng) {
+    return markers.addLayer(L.marker(latlng, { icon: constructionIcon }));
+  }
+  function createMarkerstation(feature, latlng) {
+    return markers.addLayer(L.marker(latlng, { icon: stationIcon }));
+  }
+
+  return (
+    <div className=" flex relative mt-[69.38px]" id="map">
+      <MapContainer
+        center={[47.4818, 29.3117]}
+        zoom={15}
+        scrollWheelZoom
+        className="h-screen w-full"
+      >
+        <LayersControl position="topright" >
+          <GeoJSON data={GOV} />
+          <GeoJSON data={AREA} />
+
+          {/* streetmap */}
+          <LayersControl.BaseLayer radio checked name="Open Street Name">
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+          </LayersControl.BaseLayer>
+
+          {/* satelite */}
+          <LayersControl.BaseLayer radio name="Satalite">
+            <TileLayer
+              attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>'
+              url="https://api.mapbox.com/styles/v1/lzahrani/clb7ov42s001q15qgj54sms68/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibHphaHJhbmkiLCJhIjoiY2xiN295YzU5MGRjaDN0bGo1ZmdkbmNtdSJ9.lZ0_MSSUHq5gDmXFqbrc1Q"
+            />
+          </LayersControl.BaseLayer>
+
+          {/* paci map */}
+          <LayersControl.BaseLayer radio name="Paci Map">
+            {apiKey && (
+              <VectorBasemapLayer name="ArcGIS:Streets" token={apiKey} />
+            )}
+
+            <LayersControl.Overlay checked name="Vector Tile Layer">
+              <VectorTileLayer url="https://tiles.arcgis.com/tiles/2zwTmDUxTzTVBytU/arcgis/rest/services/KuwaitFinder3Basemap/VectorTileServer" />
+            </LayersControl.Overlay>
+          </LayersControl.BaseLayer>
+
+          {/* construction */}
+          <LayersControl.Overlay
+            radio
+            checked
+            name="Construction Projects"
+            icon={greenIcon}
+          >
+            <GeoJSON
+              data={CONSTRUCTION.features}
+              onEachFeature={onEachConstruction}
+              pointToLayer={createMarker}
+            ></GeoJSON>
+          </LayersControl.Overlay>
+
+          <WMSTileLayer
+            url="http://geo1.esmrts.com/geoserver/ows?"
+            version="1.3.0"
+            layers={wmsLayerString}
+            format="image/png"
+            height="768"
+            width="677"
+            zIndex={10000}
+            opacity={1}
+            maxZoom={24}
+            transparent={true}
+          />
+
+          {/* station */}
+          <LayersControl.Overlay
+            radio
+            checked
+            name="Station Projects"
+            icon={greenIcon}
+          >
+            <GeoJSON
+              data={SPF.features}
+              onEachFeature={onEachSPF}
+              pointToLayer={createMarkerstation}
+            ></GeoJSON>
+          </LayersControl.Overlay>
+
+
+        </LayersControl>
+        <LocationMarker />
+      </MapContainer>
+    </div>
+  
+  );
+}
