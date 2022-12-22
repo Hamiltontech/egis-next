@@ -1,5 +1,7 @@
 import { React, use, useEffect, useState } from "react";
 import { GoLocation } from "react-icons/go";
+import {CiLocationArrow1} from 'react-icons/ci'
+import {BsPinMap, BsMap} from 'react-icons/bs'
 import Sanitary from "../../public/data/Border_Final_join.json";
 import Construction from "../../public/data/Construction_projects.json";
 import Station from "../../public/data/Station_Point_Final.json";
@@ -428,9 +430,9 @@ const Sidebar = ({
                   <li>
                     <div>
                       <h1 className="relative flex flex-row items-center pr-6 text-white duration-150 ease-in-out border-l-4 border-transparent hover:text-gray-600 h-11 focus:outline-none hover:bg-gray-50 border-[#9d3039]">
-                        {/* <span className="inline-flex items-center justify-center ml-1">
-                          <GoLocation />
-                        </span> */}
+                        <span className="inline-flex items-center justify-center ml-1">
+                          <CiLocationArrow1 />
+                        </span>
                         <span className="ml-2 text-md tracking-wide truncate ">
                           Select Location Type
                         </span>
@@ -494,9 +496,9 @@ const Sidebar = ({
                   <li>
                     <div>
                       <h1 className="relative flex flex-row items-center -6 text-white duration-150 ease-in-out border-l-4 border-transparent hover:text-gray-600 h-11 focus:outline-none hover:bg-gray-50 border-[#9d3039]">
-                        {/* <span className="inline-flex items-center justify-center ml-1">
+                        <span className="inline-flex items-center justify-center ml-1">
                           <GoLocation />
-                        </span> */}
+                        </span>
                         <span className="ml-2 text-md tracking-wide truncate">
                           Select Location
                         </span>
@@ -548,9 +550,9 @@ const Sidebar = ({
                   <li>
                     <div>
                       <h1 className="relative flex flex-row items-center pr-6 text-white duration-150 ease-in-out border-l-4 border-transparent hover:text-gray-600 h-11 focus:outline-none hover:bg-gray-50 border-[#9d3039]">
-                        {/* <span className="inline-flex items-center justify-center ml-1">
-                          <GoLocation />
-                        </span> */}
+                        <span className="inline-flex items-center justify-center ml-1">
+                          <BsPinMap />
+                        </span>
                         <span className="ml-2 text-md tracking-wide truncate">
                           Select Project Type
                         </span>
@@ -667,9 +669,9 @@ const Sidebar = ({
                   <li>
                     <div>
                       <h1 className="relative flex flex-row items-center pr-6 text-white duration-150 ease-in-out border-l-4 border-transparent hover:text-gray-600 h-11 focus:outline-none hover:bg-gray-50 border-[#9d3039]">
-                        {/* <span className="inline-flex items-center justify-center ml-1">
-                          <GoLocation />
-                        </span> */}
+                        <span className="inline-flex items-center justify-center ml-1">
+                          <BsMap />
+                        </span>
                         <span className="ml-2 text-md tracking-wide truncate">
                           Select Project Name
                         </span>
