@@ -827,9 +827,9 @@ const Sidebar = ({
                 {/* <button className="bg-white text-gray-700 hover:bg-white/80 ease-in-out duration-150 p-2">
                   Print
                 </button> */}
-                <button className="hover:text-white/50 ease-in-out duration-150 p-1">
+                <a href="http://162.210.100.154:3001/" className="hover:text-white/50 ease-in-out duration-150 p-1">
                   العربية
-                </button>
+                </a>
               </div>
 
               <div className="flex items-center justify-center mx-4 text-[11px]">
