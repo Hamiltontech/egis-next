@@ -428,11 +428,11 @@ const Sidebar = ({
                   <li>
                     <div>
                       <h1 className="relative flex flex-row items-center pr-6 text-white duration-150 ease-in-out border-l-4 border-transparent hover:text-gray-600 h-11 focus:outline-none hover:bg-gray-50 border-[#9d3039]">
-                        <span className="inline-flex items-center justify-center ml-1">
+                        {/* <span className="inline-flex items-center justify-center ml-1">
                           <GoLocation />
-                        </span>
-                        <span className="ml-2 text-md tracking-wide truncate">
-                          Location Type
+                        </span> */}
+                        <span className="ml-2 text-md tracking-wide truncate ">
+                          Select Location Type
                         </span>
                       </h1>
                       <div class="flex pl-5 text-[14px]">
@@ -494,9 +494,9 @@ const Sidebar = ({
                   <li>
                     <div>
                       <h1 className="relative flex flex-row items-center -6 text-white duration-150 ease-in-out border-l-4 border-transparent hover:text-gray-600 h-11 focus:outline-none hover:bg-gray-50 border-[#9d3039]">
-                        <span className="inline-flex items-center justify-center ml-1">
+                        {/* <span className="inline-flex items-center justify-center ml-1">
                           <GoLocation />
-                        </span>
+                        </span> */}
                         <span className="ml-2 text-md tracking-wide truncate">
                           Select Location
                         </span>
@@ -548,11 +548,11 @@ const Sidebar = ({
                   <li>
                     <div>
                       <h1 className="relative flex flex-row items-center pr-6 text-white duration-150 ease-in-out border-l-4 border-transparent hover:text-gray-600 h-11 focus:outline-none hover:bg-gray-50 border-[#9d3039]">
-                        <span className="inline-flex items-center justify-center ml-1">
+                        {/* <span className="inline-flex items-center justify-center ml-1">
                           <GoLocation />
-                        </span>
+                        </span> */}
                         <span className="ml-2 text-md tracking-wide truncate">
-                          Search Methods
+                          Select Project Type
                         </span>
                       </h1>
                       <div class="flex pl-5 text-[14px] ">
@@ -667,11 +667,11 @@ const Sidebar = ({
                   <li>
                     <div>
                       <h1 className="relative flex flex-row items-center pr-6 text-white duration-150 ease-in-out border-l-4 border-transparent hover:text-gray-600 h-11 focus:outline-none hover:bg-gray-50 border-[#9d3039]">
-                        <span className="inline-flex items-center justify-center ml-1">
+                        {/* <span className="inline-flex items-center justify-center ml-1">
                           <GoLocation />
-                        </span>
+                        </span> */}
                         <span className="ml-2 text-md tracking-wide truncate">
-                          Select Project
+                          Select Project Name
                         </span>
                       </h1>
                       <select

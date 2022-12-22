@@ -107,7 +107,7 @@ export default function Map({
       <br></br>
       <p style="text-align:center; padding:10px; margin-top:5px"> ${COProjectDescription}</p>
      <hr />
-     <p style="text-align:center; padding:10px;">${spf.geometry.coordinates[0]}, ${spf.geometry.coordinates[1]}</p>
+     <p style="text-align:center; padding:10px;">${spf.geometry.coordinates}</p>
       <hr/>
     </div>
       `
