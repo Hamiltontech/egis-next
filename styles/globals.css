@@ -13,6 +13,7 @@
   
   }
 
+
   path.leaflet-interactive {
     fill: transparent;
 }
@@ -23,6 +24,18 @@
     max-height: 100%;
     overflow: hidden;
     page-break-after: always;
+}
+.leaflet-popup-content-wrapper {
+    padding: 0 !important;
+    text-align: left;
+    border-radius: 0 !important;
+}
+.leaflet-popup-content{
+    margin: 0 !important;
+}
+
+.leaflet-container a.leaflet-popup-close-button{
+    color:white !important
 }
 .leaflet-cluster-anim .leaflet-marker-icon, .leaflet-cluster-anim .leaflet-marker-shadow {
 	-webkit-transition: -webkit-transform 0.3s ease-out, opacity 0.3s ease-in;
