@@ -7,7 +7,7 @@ import logo4 from "../../public/assets/microsoft.png";
 
 const TechicalSection = () => {
   return (
-    <div className="h-full w-full bg-cover bg-[url('https://geo1.esmrts.com/wp-content/uploads/2021/06/shutterstock_1228516114-scaled.jpg')]
+    <div className="font-tajwal h-full w-full bg-cover bg-[url('https://geo1.esmrts.com/wp-content/uploads/2021/06/shutterstock_1228516114-scaled.jpg')]
     ">
       <div className="w-full h-full bg-white/70 grid place-items-center">
 <h1 className="font-extrabold text-5xl text-[#162641] grid text-center mt-20">4.0.0

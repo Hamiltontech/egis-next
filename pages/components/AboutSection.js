@@ -8,7 +8,7 @@ import logo4 from '../../public/assets/microsoft.png'
 const AboutSection = () => {
   return (
     <div className=''>
-               <div className=' w-full flex justify-center mt-20'>
+               <div className='font-tajwal w-full flex justify-center mt-20'>
                 <div className='grid justify-center'>
                     <h1 className='text-3xl text-[#162641]/70 text-center'>All The Technology You Need</h1>
                     <p className='text-[#162641]/80 text-center mt-5 font-extralight text-2xl'>This is version 1.0.0 of our GIS Platform served over the web as SaaS powered by </p>
