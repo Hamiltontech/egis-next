@@ -811,10 +811,27 @@ const Sidebar = ({
               </div> */}
 
               <div>
-                <button onClick={()=>window.print()} className="bg-[#9d3039] p-1 w-[250px] hover:bg-[#9d3039]/70 ease-in-out duration-200">
+              <button
+              onClick={()=>{
+                setConstruction(false);
+      setStation(false);
+      setMega(false);
+      setSanitary(false)
+      setGov(false)
+      setArea(false)
+      setProjectCoordinates(29.3117);
+                               setProjectCoordinates1(47.4818);
+              }}
+              className="bg-[#9d3039] p-1 w-[250px] hover:bg-[#9d3039]/70 ease-in-out duration-200">
+                  Clear Search
+                </button>
+                <div>
+                <button onClick={()=>window.print()} className="bg-[#9d3039] mt-1 p-1 w-[250px] hover:bg-[#9d3039]/70 ease-in-out duration-200">
                   Print
                 </button>
+                </div>
               </div>
+              
               <div>
                 <button className="bg-[#9d3039] p-1 w-[250px] mb-5 hover:bg-[#9d3039]/70 ease-in-out duration-200" onClick={()=>setInfo(true)}>
                   Need Help ?
