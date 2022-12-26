@@ -50,6 +50,7 @@ export default function Map({
   construction,
   areaGov,
   setAreaGov,
+  zoom, setZoom
 }) {
   var greenIcon = L.icon({
     iconUrl: "https://i.imgur.com/ld3rkCP.png",
@@ -120,17 +121,17 @@ export default function Map({
     const map = useMapEvents({
       locationfound(e) {
         setPosition(e.latlng);
-        map.flyTo(e.latlng, map.getZoom());
+        map.flyTo(e.latlng, map.getZoom(), 15);
       },
     });
 
     useEffect(() => {
       if (areaGov === true) {
-        map.flyTo([areazone, areazone1], map.getZoom());
+        map.flyTo([areazone, areazone1], map.getZoom(), 15);
         setPosition([areazone, areazone1]);
       } else {
         setPosition([projectCoordinated, projectCoordinated1]);
-        map.flyTo([projectCoordinated, projectCoordinated1], map.getZoom());
+        map.flyTo([projectCoordinated, projectCoordinated1], map.getZoom(), 15);
       } 
     }, [projectCoordinated]);
 
@@ -182,6 +183,7 @@ export default function Map({
 
   return (
     <div className=" flex relative mt-[69.38px]" id="map">
+
       <MapContainer
         center={[47.4818, 29.3117]}
         zoom={9}

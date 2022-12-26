@@ -21,7 +21,7 @@ const MyMap = dynamic(() => import("../src/components/Map"), {
 
 export default function Home() {
   
-
+const [zoom, setZoom] = useState(9)
 
   const [sanitary, setSanitary] = useState(false);
   const [construction, setConstruction] = useState(false);
