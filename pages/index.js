@@ -177,9 +177,9 @@ const [zoom, setZoom] = useState(9)
               id="defaultModal"
               tabindex="-1"
               aria-hidden="true"
-              class="flex justify-center align-middle   z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full"
+              class="flex justify-center align-middle z-50 w-full lg:p-4 my-3 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full"
             >
-              <div class="relative w-full h-full max-w-[70%] md:h-auto ">
+              <div class="relative w-full h-full lg:max-w-[70%] md:h-auto max-w-[90%]">
                 <div class="relative bg-white shadow ">
                   <button
                     className="flex float-right pr-1 mt-1 cursor-pointer "
