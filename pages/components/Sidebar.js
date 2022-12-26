@@ -145,7 +145,18 @@ const Sidebar = ({
                         ];
                         return (
                           <>
-                            <div className="relative flex items-center">
+                            <div className="lg:hidden">
+                              <Image
+                                src={
+                                  "https://geo1.esmrts.com/image/" +
+                                  item.properties.image1
+                                }
+                                width={500}
+                                height={500}
+                              />
+                            </div>
+
+                            <div className="relative lg:flex items-center hidden">
                               <MdChevronLeft
                                 className="opacity-50 cursor-pointer hover:opacity-100"
                                 onClick={slideLeft}
@@ -224,7 +235,17 @@ const Sidebar = ({
                         ];
                         return (
                           <>
-                            <div className="relative flex items-center">
+                           <div className="lg:hidden">
+                              <Image
+                                src={
+                                  "https://geo1.esmrts.com/image/" +
+                                  item.properties.image1
+                                }
+                                width={500}
+                                height={500}
+                              />
+                            </div>
+                            <div className="relative lg:flex items-center hidden">
                               <MdChevronLeft
                                 className="opacity-50 cursor-pointer hover:opacity-100"
                                 onClick={slideLeft}
@@ -299,7 +320,17 @@ const Sidebar = ({
                         ];
                         return (
                           <>
-                            <div className="relative flex items-center">
+                           <div className="lg:hidden">
+                              <Image
+                                src={
+                                  "https://geo1.esmrts.com/image/" +
+                                  item.properties.image1
+                                }
+                                width={500}
+                                height={500}
+                              />
+                            </div>
+                            <div className="relative lg:flex items-center hidden">
                               <MdChevronLeft
                                 className="opacity-50 cursor-pointer hover:opacity-100"
                                 onClick={slideLeft}
@@ -378,7 +409,17 @@ const Sidebar = ({
                         ];
                         return (
                           <>
-                            <div className="relative flex items-center">
+                           <div className="lg:hidden">
+                              <Image
+                                src={
+                                  "https://geo1.esmrts.com/image/" +
+                                  item.properties.image1
+                                }
+                                width={500}
+                                height={500}
+                              />
+                            </div>
+                            <div className="relative lg:flex items-center hidden">
                               <MdChevronLeft
                                 className="opacity-50 cursor-pointer hover:opacity-100"
                                 onClick={slideLeft}
@@ -887,8 +928,6 @@ const Sidebar = ({
                 </button>
               </div>
 
-              
-
               <div className="flex justify-center gap-2 mt-2 text-md ">
                 <a
                   href="https://egis-ar.vercel.app/"
@@ -903,37 +942,37 @@ const Sidebar = ({
             </ul>
 
             <hr className="mx-4" />
-              <div className="grid grid-cols-2 text-xs justify-between py-4 lg:hidden">
-                <div className="flex pt-2 ">
-                  <FaMapMarkerAlt size={15} className="text-blue-500" />
-                  <p className="mx-1">Stations</p>
-                </div>
-
-                <div className="flex pt-2">
-                  <FaMapMarkerAlt size={15} className="text-red-600 " />
-                  <p className=" mx-1">Construction</p>
-                </div>
-
-                <div className="flex pt-2 ">
-                  <FaGripLinesVertical size={15} className="text-blue-400" />
-                  <p className="mx-1">Pipe</p>
-                </div>
-
-                <div className="flex pt-2  ">
-                  <BsCircleFill size={15} className="text-gray-200" />
-                  <p className="mx-1 ">Manhole</p>
-                </div>
-
-                <div className="flex pt-2">
-                  <FaArrowUp size={15} className="text-orange-400" />
-                  <p className="mx-1">Flow Direction</p>
-                </div>
-
-                <div className="flex pt-2 ">
-                  <BsSquareFill size={15} className="text-orange-400 mr-1" />
-                  <p className="">House Connection</p>
-                </div>
+            <div className="grid grid-cols-2 text-xs justify-between py-4 lg:hidden">
+              <div className="flex pt-2 ">
+                <FaMapMarkerAlt size={15} className="text-blue-500" />
+                <p className="mx-1">Stations</p>
               </div>
+
+              <div className="flex pt-2">
+                <FaMapMarkerAlt size={15} className="text-red-600 " />
+                <p className=" mx-1">Construction</p>
+              </div>
+
+              <div className="flex pt-2 ">
+                <FaGripLinesVertical size={15} className="text-blue-400" />
+                <p className="mx-1">Pipe</p>
+              </div>
+
+              <div className="flex pt-2  ">
+                <BsCircleFill size={15} className="text-gray-200" />
+                <p className="mx-1 ">Manhole</p>
+              </div>
+
+              <div className="flex pt-2">
+                <FaArrowUp size={15} className="text-orange-400" />
+                <p className="mx-1">Flow Direction</p>
+              </div>
+
+              <div className="flex pt-2 ">
+                <BsSquareFill size={15} className="text-orange-400 mr-1" />
+                <p className="">House Connection</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
