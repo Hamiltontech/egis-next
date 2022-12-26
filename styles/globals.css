@@ -93,6 +93,12 @@
     background-color: #162641;
     border-radius: 10px;
 }
+
+/* @media only screen and (max-width: 600px) {
+.leaflet-top {
+    top: 80px !important;
+}
+} */
 .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar{
     border: none !important;
 }

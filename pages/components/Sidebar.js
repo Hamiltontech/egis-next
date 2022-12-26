@@ -1,7 +1,7 @@
 import { React, use, useEffect, useState } from "react";
 import { GoLocation } from "react-icons/go";
-import {CiLocationArrow1} from 'react-icons/ci'
-import {BsPinMap, BsMap} from 'react-icons/bs'
+import { CiLocationArrow1 } from "react-icons/ci";
+import { BsPinMap, BsMap } from "react-icons/bs";
 import Sanitary from "../../public/data/Border_Final_join.json";
 import Construction from "../../public/data/Construction_projects.json";
 import Station from "../../public/data/Station_Point_Final.json";
@@ -14,7 +14,6 @@ import { BsCircleFill, BsSquareFill } from "react-icons/bs";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import Image from "next/image";
 import { MdChevronRight, MdChevronLeft } from "react-icons/md";
-
 
 const Sidebar = ({
   show,
@@ -29,23 +28,22 @@ const Sidebar = ({
   setStation,
   mega,
   setMega,
-  projectCoordinated, 
+  projectCoordinated,
   setProjectCoordinates,
   setProjectCoordinates1,
   setProjectDescription,
   setProjectName,
   setInfo,
   info,
-  projectPosition, 
+  projectPosition,
   setprojectPosition,
   areaGov,
   setAreaGov,
-  zoom, setZoom
-
+  zoom,
+  setZoom,
 }) => {
   const [constructionProject, setConstructionProject] = useState("");
   const [ShowAdvanced, setShowAdvanced] = useState(true);
-
 
   const slideLeft = () => {
     var slider = document.getElementById("slider");
@@ -108,10 +106,8 @@ const Sidebar = ({
     }
   };
 
-
-
   return (
-    <div className={info? "hidden":"text-center h-screen bg-[#162641]"}>
+    <div className={info ? "hidden" : "text-center h-screen bg-[#162641]"}>
       <div className=" flex flex-col flex-auto min-h-screen text-white duration-500 ease-in-out bg-[#162641] ">
         <div
           className={` sm:w-[300px] bg-[#162641] p-1  h-full z-40 ease-in-out duration-500 w-full  ${
@@ -133,18 +129,18 @@ const Sidebar = ({
                       if (
                         item.properties.cid.toString() === constructionProject
                       ) {
-                        
                         const constImages = [
                           "https://geo1.esmrts.com/image/" +
                             item.properties.image1,
                           "https://geo1.esmrts.com/image/" +
                             item.properties.image2,
                           "https://geo1.esmrts.com/image/" +
-                            item.properties.image3,"https://geo1.esmrts.com/image/" +
+                            item.properties.image3,
+                          "https://geo1.esmrts.com/image/" +
                             item.properties.image4,
-                            "https://geo1.esmrts.com/image/" +
+                          "https://geo1.esmrts.com/image/" +
                             item.properties.image5,
-                            "https://geo1.esmrts.com/image/" +
+                          "https://geo1.esmrts.com/image/" +
                             item.properties.image6,
                         ];
                         return (
@@ -188,16 +184,27 @@ const Sidebar = ({
                                 className="text-red-600"
                               />
                               <h1>{item.properties.co_name_eng}</h1>
-                             
                             </div>
-                            <button onClick={()=>{
-                              setProjectCoordinates(item.geometry.coordinates[1]);
-                               setProjectCoordinates1(item.geometry.coordinates[0]);
+                            <button
+                              onClick={() => {
+                                setProjectCoordinates(
+                                  item.geometry.coordinates[1]
+                                );
+                                setProjectCoordinates1(
+                                  item.geometry.coordinates[0]
+                                );
                                 setProjectName(item.properties.co_name_eng);
-                                 setProjectDescription(item.properties.description_eng)
-                                 setprojectPosition(true)
-                                 setAreaGov(false);
-                                 }} className="text-sm p-2 hover:bg-[#9d3039]/80 bg-[#9d3039]"> Show On Map</button>
+                                setProjectDescription(
+                                  item.properties.description_eng
+                                );
+                                setprojectPosition(true);
+                                setAreaGov(false);
+                              }}
+                              className="text-sm p-2 hover:bg-[#9d3039]/80 bg-[#9d3039]"
+                            >
+                              {" "}
+                              Show On Map
+                            </button>
                           </>
                         );
                       }
@@ -257,15 +264,22 @@ const Sidebar = ({
                               />
                               <h1>{item.properties.co_name_eng}</h1>
                             </div>
-                            <button onClick={()=>{
-                              setProjectCoordinates(item.properties.north);
-                               setProjectCoordinates1(item.properties.east);
+                            <button
+                              onClick={() => {
+                                setProjectCoordinates(item.properties.north);
+                                setProjectCoordinates1(item.properties.east);
                                 setProjectName(item.properties.co_name_eng);
-                                 setProjectDescription(item.properties.description_eng)
-                                 setprojectPosition(true)
-                                 setAreaGov(false);
-                                 }} className="text-sm p-2 hover:bg-[#9d3039]/80 bg-[#9d3039]"> Show On Map</button>
-
+                                setProjectDescription(
+                                  item.properties.description_eng
+                                );
+                                setprojectPosition(true);
+                                setAreaGov(false);
+                              }}
+                              className="text-sm p-2 hover:bg-[#9d3039]/80 bg-[#9d3039]"
+                            >
+                              {" "}
+                              Show On Map
+                            </button>
                           </>
                         );
                       }
@@ -285,7 +299,7 @@ const Sidebar = ({
                         ];
                         return (
                           <>
-                           <div className="relative flex items-center">
+                            <div className="relative flex items-center">
                               <MdChevronLeft
                                 className="opacity-50 cursor-pointer hover:opacity-100"
                                 onClick={slideLeft}
@@ -325,14 +339,26 @@ const Sidebar = ({
                               />
                               <h1>{item.properties.st_name_eng}</h1>
                             </div>
-                            <button onClick={()=>{setProjectCoordinates(item.geometry.coordinates[0][1]);
-                               setProjectCoordinates1(item.geometry.coordinates[0][0]);
+                            <button
+                              onClick={() => {
+                                setProjectCoordinates(
+                                  item.geometry.coordinates[0][1]
+                                );
+                                setProjectCoordinates1(
+                                  item.geometry.coordinates[0][0]
+                                );
                                 setProjectName(item.properties.st_name_eng);
-                                 setProjectDescription(item.properties.description_eng)
-                                 setprojectPosition(true)
-                                 setAreaGov(false);
-                                 }} className="text-sm p-2 hover:bg-[#9d3039]/80 bg-[#9d3039]"> Show On Map</button>
-
+                                setProjectDescription(
+                                  item.properties.description_eng
+                                );
+                                setprojectPosition(true);
+                                setAreaGov(false);
+                              }}
+                              className="text-sm p-2 hover:bg-[#9d3039]/80 bg-[#9d3039]"
+                            >
+                              {" "}
+                              Show On Map
+                            </button>
                           </>
                         );
                       }
@@ -392,14 +418,26 @@ const Sidebar = ({
                               />
                               <h1>{item.properties.co_name_eng}</h1>
                             </div>
-                            <button onClick={()=>{
-                              setProjectCoordinates(item.geometry.coordinates[0][1]);
-                               setProjectCoordinates1(item.geometry.coordinates[0][0]);
+                            <button
+                              onClick={() => {
+                                setProjectCoordinates(
+                                  item.geometry.coordinates[0][1]
+                                );
+                                setProjectCoordinates1(
+                                  item.geometry.coordinates[0][0]
+                                );
                                 setProjectName(item.properties.co_name_eng);
-                                 setProjectDescription(item.properties.description_eng)
-                                 setprojectPosition(true)
-                                 setAreaGov(false);
-                                 }} className="text-sm p-2 hover:bg-[#9d3039]/80 bg-[#9d3039]"> Show On Map</button>
+                                setProjectDescription(
+                                  item.properties.description_eng
+                                );
+                                setprojectPosition(true);
+                                setAreaGov(false);
+                              }}
+                              className="text-sm p-2 hover:bg-[#9d3039]/80 bg-[#9d3039]"
+                            >
+                              {" "}
+                              Show On Map
+                            </button>
                           </>
                         );
                       }
@@ -509,7 +547,7 @@ const Sidebar = ({
                         onChange={(e) => {
                           e.preventDefault;
                           setGovid(e.target.value);
-                          setprojectPosition(false)
+                          setprojectPosition(false);
                           setAreaGov(true);
                         }}
                       >
@@ -518,28 +556,29 @@ const Sidebar = ({
                             <option disabled selected value={0}>
                               --
                             </option>
-                            <option value={0} >Al-Jahraa</option>
-                            <option value={1} >Al-Ahmadi</option>
-                            <option value={2} >Hawali</option>
-                            <option value={3} >Mubarak Al-Kabeer</option>
-                            <option value={4} >The Capital</option>
-                            <option value={5} >AL-Farwanieh</option>
+                            <option value={0}>Al-Jahraa</option>
+                            <option value={1}>Al-Ahmadi</option>
+                            <option value={2}>Hawali</option>
+                            <option value={3}>Mubarak Al-Kabeer</option>
+                            <option value={4}>The Capital</option>
+                            <option value={5}>AL-Farwanieh</option>
                           </>
-                        ) :area? (
+                        ) : area ? (
                           <>
                             <option disabled selected>
                               --
                             </option>
-                            {Areas.features.slice(0,-6).map((item) => (
+                            {Areas.features.slice(0, -6).map((item) => (
                               <>
-                                <option value={item.properties.area_id} >
+                                <option value={item.properties.area_id}>
                                   {item.properties.area_eng}
                                 </option>
                               </>
                             ))}
                           </>
-                        ): <option >--
-                      </option>}
+                        ) : (
+                          <option>--</option>
+                        )}
                       </select>
                     </div>
                   </li>
@@ -679,7 +718,9 @@ const Sidebar = ({
                       </h1>
                       <select
                         className="select w-[250px] max-w-xs text-gray-600 p-1 outline-none m-1 mb-2"
-                        onChange={(e) => {setConstructionProject(e.target.value)}}
+                        onChange={(e) => {
+                          setConstructionProject(e.target.value);
+                        }}
                       >
                         {sanitary ? (
                           <>
@@ -711,7 +752,7 @@ const Sidebar = ({
                         ) : construction ? (
                           <>
                             <option disabled selected>
-                            Construction projects
+                              Construction projects
                             </option>
                             {Construction.features.map((item) => {
                               if (item.properties.gov_id.toString() === govid) {
@@ -738,7 +779,7 @@ const Sidebar = ({
                         ) : station ? (
                           <>
                             <option disabled selected>
-                            Station projects
+                              Station projects
                             </option>
                             {Station.features.map((item) => {
                               if (
@@ -767,7 +808,7 @@ const Sidebar = ({
                         ) : mega ? (
                           <>
                             <option disabled selected>
-                            Mega projects
+                              Mega projects
                             </option>
                             {Mega.features.map((item) => {
                               if (item.properties.gov_id.toString() === govid) {
@@ -812,48 +853,87 @@ const Sidebar = ({
               </div> */}
 
               <div>
-              <button
-              onClick={()=>{
-                setConstruction(false);
-                setStation(false);
-                setMega(false);
-                setSanitary(false)
-                setGov(false)
-                setArea(false)
-                setProjectCoordinates(29.3117);
-                setProjectCoordinates1(47.4818);
-              }}
-              className="bg-[#9d3039] p-1 w-[250px] hover:bg-[#9d3039]/70 ease-in-out duration-200">
+                <button
+                  onClick={() => {
+                    setConstruction(false);
+                    setStation(false);
+                    setMega(false);
+                    setSanitary(false);
+                    setGov(false);
+                    setArea(false);
+                    setProjectCoordinates(29.3117);
+                    setProjectCoordinates1(47.4818);
+                  }}
+                  className="bg-[#9d3039] p-1 w-[250px] hover:bg-[#9d3039]/70 ease-in-out duration-200"
+                >
                   Clear Search
                 </button>
                 <div>
-                <button onClick={()=>window.print()} className="bg-[#9d3039] mt-1 p-1 w-[250px] hover:bg-[#9d3039]/70 ease-in-out duration-200">
-                  Print
-                </button>
+                  <button
+                    onClick={() => window.print()}
+                    className="bg-[#9d3039] mt-1 p-1 w-[250px] hover:bg-[#9d3039]/70 ease-in-out duration-200"
+                  >
+                    Print
+                  </button>
                 </div>
               </div>
-              
+
               <div>
-                <button className="bg-[#9d3039] p-1 w-[250px] mb-5 hover:bg-[#9d3039]/70 ease-in-out duration-200" onClick={()=>setInfo(true)}>
+                <button
+                  className="bg-[#9d3039] p-1 w-[250px] mb-5 hover:bg-[#9d3039]/70 ease-in-out duration-200"
+                  onClick={() => setInfo(true)}
+                >
                   Need Help ?
                 </button>
               </div>
+
+              
+
               <div className="flex justify-center gap-2 mt-2 text-md ">
-                {/* <button className="bg-white text-gray-700 hover:bg-white/80 ease-in-out duration-150 p-2">
-                  Clear Search
-                </button> */}
-                {/* <button className="bg-white text-gray-700 hover:bg-white/80 ease-in-out duration-150 p-2">
-                  Print
-                </button> */}
-                <a href="https://egis-ar.vercel.app/" className="hover:text-white/50 ease-in-out duration-150 p-1">
+                <a
+                  href="https://egis-ar.vercel.app/"
+                  className="hover:text-white/50 ease-in-out duration-150 p-1"
+                >
                   العربية
                 </a>
               </div>
-
               <div className="flex items-center justify-center mx-4 text-[11px]">
                 All Rights Reserved 2021 © Ministry of Public Works
               </div>
             </ul>
+
+            <hr className="mx-4" />
+              <div className="grid grid-cols-2 text-xs justify-between py-4 lg:hidden">
+                <div className="flex pt-2 ">
+                  <FaMapMarkerAlt size={15} className="text-blue-500" />
+                  <p className="mx-1">Stations</p>
+                </div>
+
+                <div className="flex pt-2">
+                  <FaMapMarkerAlt size={15} className="text-red-600 " />
+                  <p className=" mx-1">Construction</p>
+                </div>
+
+                <div className="flex pt-2 ">
+                  <FaGripLinesVertical size={15} className="text-blue-400" />
+                  <p className="mx-1">Pipe</p>
+                </div>
+
+                <div className="flex pt-2  ">
+                  <BsCircleFill size={15} className="text-gray-200" />
+                  <p className="mx-1 ">Manhole</p>
+                </div>
+
+                <div className="flex pt-2">
+                  <FaArrowUp size={15} className="text-orange-400" />
+                  <p className="mx-1">Flow Direction</p>
+                </div>
+
+                <div className="flex pt-2 ">
+                  <BsSquareFill size={15} className="text-orange-400 mr-1" />
+                  <p className="">House Connection</p>
+                </div>
+              </div>
           </div>
         </div>
       </div>

@@ -18,7 +18,6 @@ const MyMap = dynamic(() => import("../src/components/Map"), {
   ssr: false
 });
 
-
 export default function Home() {
   
 const [zoom, setZoom] = useState(9)
@@ -144,7 +143,9 @@ const [zoom, setZoom] = useState(9)
           />
     
           {/* legends */}
+          <div className="hidden lg:block">
           <Legends />
+          </div>
         </div>
         {about && (
           <div className="w-full h-full bg-[#162641] ">
