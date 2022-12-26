@@ -827,7 +827,7 @@ const Sidebar = ({
                 {/* <button className="bg-white text-gray-700 hover:bg-white/80 ease-in-out duration-150 p-2">
                   Print
                 </button> */}
-                <a href="http://162.210.100.154:3001/" className="hover:text-white/50 ease-in-out duration-150 p-1">
+                <a href="https://egis-ar.vercel.app/" className="hover:text-white/50 ease-in-out duration-150 p-1">
                   العربية
                 </a>
               </div>
