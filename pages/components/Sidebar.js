@@ -44,7 +44,8 @@ const Sidebar = ({
 }) => {
   const [constructionProject, setConstructionProject] = useState("");
   const [ShowAdvanced, setShowAdvanced] = useState(true);
-
+  const [proName, setProName] = useState("Search..");
+  console.log(constructionProject);
   const slideLeft = () => {
     var slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft - 210;
@@ -105,6 +106,27 @@ const Sidebar = ({
       setStation(false);
     }
   };
+
+  // search filter function
+  const [showOptions, setShowOptions] = useState(false);
+
+  function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL") || "";
+    li = ul.getElementsByTagName("li") || "";
+
+    for (i = 0; i < li.length; i++) {
+      txtValue = li[i].textContent || li[i].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  }
 
   return (
     <div className={info ? "hidden" : "text-center h-screen bg-[#162641]"}>
@@ -168,7 +190,7 @@ const Sidebar = ({
                               >
                                 {constImages.map((item) => (
                                   <div key={item}>
-                                    <div className=" py-1 mx-2 mt-10 mb-2  w-[200px] inline-block hover:scale-150 ease-in-out duration-300">
+                                    <div className="mx-2 mt-10 w-[200px] inline-block hover:scale-150 ease-in-out duration-300">
                                       <div className="w-full h-full  ">
                                         <Image
                                           alt=""
@@ -189,33 +211,13 @@ const Sidebar = ({
                                 size={40}
                               />
                             </div>
-                            <div className="flex m-2 gap-1">
+                            <div className="flex m-2 gap-1 justify-center">
                               <FaMapMarkerAlt
                                 size={20}
                                 className="text-red-600"
                               />
-                              <h1>{item.properties.co_name_eng}</h1>
+                              <h1 className="text-sm max-w-[200px] text-center">{item.properties.co_name_eng}</h1>
                             </div>
-                            <button
-                              onClick={() => {
-                                setProjectCoordinates(
-                                  item.geometry.coordinates[1]
-                                );
-                                setProjectCoordinates1(
-                                  item.geometry.coordinates[0]
-                                );
-                                setProjectName(item.properties.co_name_eng);
-                                setProjectDescription(
-                                  item.properties.description_eng
-                                );
-                                setprojectPosition(true);
-                                setAreaGov(false);
-                              }}
-                              className="text-sm p-2 hover:bg-[#9d3039]/80 bg-[#9d3039]"
-                            >
-                              {" "}
-                              Show On Map
-                            </button>
                           </>
                         );
                       }
@@ -235,7 +237,7 @@ const Sidebar = ({
                         ];
                         return (
                           <>
-                           <div className="lg:hidden">
+                            <div className="lg:hidden">
                               <Image
                                 src={
                                   "https://geo1.esmrts.com/image/" +
@@ -257,7 +259,7 @@ const Sidebar = ({
                               >
                                 {constImages.map((item) => (
                                   <div key={item}>
-                                    <div className=" py-1 mx-2 mt-10 mb-2  w-[200px] inline-block hover:scale-150 ease-in-out duration-300">
+                                    <div className="mx-2 mt-10 w-[200px] inline-block hover:scale-150 ease-in-out duration-300">
                                       <div className="w-full h-full  ">
                                         <Image
                                           alt=""
@@ -278,38 +280,21 @@ const Sidebar = ({
                                 size={40}
                               />
                             </div>
-                            <div className="flex m-2 gap-1">
+                            <div className="flex m-2 gap-1 justify-center">
                               <FaGripLinesVertical
                                 size={30}
                                 className="text-blue-400"
                               />
-                              <h1>{item.properties.co_name_eng}</h1>
+                              <h1 className="text-sm max-w-[200px] text-center">{item.properties.co_name_eng}</h1>
                             </div>
-                            <button
-                              onClick={() => {
-                                setProjectCoordinates(item.properties.north);
-                                setProjectCoordinates1(item.properties.east);
-                                setProjectName(item.properties.co_name_eng);
-                                setProjectDescription(
-                                  item.properties.description_eng
-                                );
-                                setprojectPosition(true);
-                                setAreaGov(false);
-                              }}
-                              className="text-sm p-2 hover:bg-[#9d3039]/80 bg-[#9d3039]"
-                            >
-                              {" "}
-                              Show On Map
-                            </button>
+                           
                           </>
                         );
                       }
                     })
                   ) : station ? (
                     Station.features.map((item) => {
-                      if (
-                        item.properties.cid.toString() === constructionProject
-                      ) {
+                      if (item.properties.cid === constructionProject) {
                         const constImages = [
                           "https://geo1.esmrts.com/image/" +
                             item.properties.image1,
@@ -320,7 +305,7 @@ const Sidebar = ({
                         ];
                         return (
                           <>
-                           <div className="lg:hidden">
+                            <div className="lg:hidden">
                               <Image
                                 src={
                                   "https://geo1.esmrts.com/image/" +
@@ -342,7 +327,7 @@ const Sidebar = ({
                               >
                                 {constImages.map((item) => (
                                   <div key={item}>
-                                    <div className=" py-1 mx-2 mt-10 mb-2  w-[200px] inline-block hover:scale-150 ease-in-out duration-300">
+                                    <div className="  mx-2 mt-10   w-[200px] inline-block hover:scale-150 ease-in-out duration-300">
                                       <div className="w-full h-full  ">
                                         <Image
                                           alt=""
@@ -363,42 +348,21 @@ const Sidebar = ({
                                 size={40}
                               />
                             </div>
-                            <div className="flex m-2 gap-1">
+                            <div className="flex m-2 gap-1 justify-center">
                               <FaMapMarkerAlt
                                 size={20}
                                 className="text-blue-500"
                               />
-                              <h1>{item.properties.st_name_eng}</h1>
+                              <h1 className="text-sm max-w-[200px] text-center">{item.properties.st_name_eng}</h1>
                             </div>
-                            <button
-                              onClick={() => {
-                                setProjectCoordinates(
-                                  item.geometry.coordinates[0][1]
-                                );
-                                setProjectCoordinates1(
-                                  item.geometry.coordinates[0][0]
-                                );
-                                setProjectName(item.properties.st_name_eng);
-                                setProjectDescription(
-                                  item.properties.description_eng
-                                );
-                                setprojectPosition(true);
-                                setAreaGov(false);
-                              }}
-                              className="text-sm p-2 hover:bg-[#9d3039]/80 bg-[#9d3039]"
-                            >
-                              {" "}
-                              Show On Map
-                            </button>
+                           
                           </>
                         );
                       }
                     })
                   ) : mega ? (
                     Mega.features.map((item) => {
-                      if (
-                        item.properties.cid.toString() === constructionProject
-                      ) {
+                      if (item.properties.cid === constructionProject) {
                         const constImages = [
                           "https://geo1.esmrts.com/image/" +
                             item.properties.image1,
@@ -409,7 +373,7 @@ const Sidebar = ({
                         ];
                         return (
                           <>
-                           <div className="lg:hidden">
+                            <div className="lg:hidden">
                               <Image
                                 src={
                                   "https://geo1.esmrts.com/image/" +
@@ -431,7 +395,7 @@ const Sidebar = ({
                               >
                                 {constImages.map((item) => (
                                   <div key={item}>
-                                    <div className=" py-1 mx-2 mt-10 mb-2  w-[200px] inline-block hover:scale-150 ease-in-out duration-300">
+                                    <div className="  mx-2 mt-10   w-[200px] inline-block hover:scale-150 ease-in-out duration-300">
                                       <div className="w-full h-full  ">
                                         <Image
                                           alt=""
@@ -452,33 +416,14 @@ const Sidebar = ({
                                 size={40}
                               />
                             </div>
-                            <div className="flex m-2 gap-1">
+                            <div className="flex mb-4 gap-1 justify-center">
                               <FaMapMarkerAlt
                                 size={20}
                                 className="text-blue-500"
                               />
-                              <h1>{item.properties.co_name_eng}</h1>
+                              <h1 className="text-sm max-w-[200px] text-center">{item.properties.co_name_eng}</h1>
                             </div>
-                            <button
-                              onClick={() => {
-                                setProjectCoordinates(
-                                  item.geometry.coordinates[0][1]
-                                );
-                                setProjectCoordinates1(
-                                  item.geometry.coordinates[0][0]
-                                );
-                                setProjectName(item.properties.co_name_eng);
-                                setProjectDescription(
-                                  item.properties.description_eng
-                                );
-                                setprojectPosition(true);
-                                setAreaGov(false);
-                              }}
-                              className="text-sm p-2 hover:bg-[#9d3039]/80 bg-[#9d3039]"
-                            >
-                              {" "}
-                              Show On Map
-                            </button>
+                           
                           </>
                         );
                       }
@@ -757,130 +702,376 @@ const Sidebar = ({
                           Select Project Name
                         </span>
                       </h1>
-                      <select
-                        className="select w-[250px] max-w-xs text-gray-600 p-1 outline-none m-1 mb-2"
-                        onChange={(e) => {
-                          setConstructionProject(e.target.value);
-                        }}
-                      >
-                        {sanitary ? (
-                          <>
-                            <option disabled selected>
-                              Sanitary projects
-                            </option>
-                            {Sanitary.features.map((item) => {
-                              if (item.properties.gov_id.toString() === govid) {
-                                return (
-                                  <>
-                                    <option value={item.properties.coid}>
-                                      {item.properties.co_name_eng}
-                                    </option>
-                                  </>
-                                );
-                              } else if (
-                                item.properties.area_id.toString() === govid
-                              ) {
-                                return (
-                                  <>
-                                    <option value={item.properties.coid}>
-                                      {item.properties.co_name_eng}
-                                    </option>
-                                  </>
-                                );
-                              }
-                            })}
-                          </>
-                        ) : construction ? (
-                          <>
-                            <option disabled selected>
-                              Construction projects
-                            </option>
-                            {Construction.features.map((item) => {
-                              if (item.properties.gov_id.toString() === govid) {
-                                return (
-                                  <>
-                                    <option value={item.properties.cid}>
-                                      {item.properties.co_name_eng}
-                                    </option>
-                                  </>
-                                );
-                              } else if (
-                                item.properties.area_id.toString() === govid
-                              ) {
-                                return (
-                                  <>
-                                    <option value={item.properties.cid}>
-                                      {item.properties.co_name_eng}
-                                    </option>
-                                  </>
-                                );
-                              }
-                            })}
-                          </>
-                        ) : station ? (
-                          <>
-                            <option disabled selected>
-                              Station projects
-                            </option>
-                            {Station.features.map((item) => {
-                              if (
-                                item.properties.gove_numbe.toString() === govid
-                              ) {
-                                return (
-                                  <>
-                                    <option value={item.properties.cid}>
-                                      {item.properties.st_name_eng}
-                                    </option>
-                                  </>
-                                );
-                              } else if (
-                                item.properties.area_id.toString() === govid
-                              ) {
-                                return (
-                                  <>
-                                    <option value={item.properties.cid}>
-                                      {item.properties.st_name_eng}
-                                    </option>
-                                  </>
-                                );
-                              }
-                            })}
-                          </>
-                        ) : mega ? (
-                          <>
-                            <option disabled selected>
-                              Mega projects
-                            </option>
-                            {Mega.features.map((item) => {
-                              if (item.properties.gov_id.toString() === govid) {
-                                return (
-                                  <>
-                                    <option value={item.properties.cid}>
-                                      {item.properties.co_name_eng}
-                                    </option>
-                                  </>
-                                );
-                              } else if (
-                                item.properties.area_id.toString() === govid
-                              ) {
-                                return (
-                                  <>
-                                    <option value={item.properties.cid}>
-                                      {item.properties.co_name_eng}
-                                    </option>
-                                  </>
-                                );
-                              }
-                            })}
-                          </>
-                        ) : (
-                          <>
-                            <option disabled selected>
-                              ---
-                            </option>
-                          </>
-                        )}
-                      </select>
+
+                      {/* sanitary search filter */}
+                      {sanitary ? (
+                        <>
+                          <div className="flex justify-center max-w-xs cursor-pointer" onClick={() => setShowOptions(true)}>
+                            <input
+                              type="text"
+                              id="myInput"
+                              onChange={(e) => myFunction()}
+                              placeholder={proName}
+                              className="w-[250px] max-w-xs p-1 outline-none m-1 mb-2 bg-transparent border-b"
+                              
+                            />
+                            <IoIosArrowDown
+                              className=" mt-3 "
+                            />
+                          </div>
+                          {showOptions && (
+                            <ul
+                              id="myUL"
+                              style={{ height: "200px", overflowY: "scroll" }}
+                              className="no-scrollbar bg-white/20"
+                            >
+                              {Sanitary.features.map((item) => {
+                                if (
+                                  item.properties.gov_id.toString() ===
+                                  govid
+                                ) {
+                                  return (
+                                    <>
+                                      <li
+                                        className="cursor-pointer hover:bg-[#9d3039]/20 max-w-xs text-sm py-2 border-b border-white/30"
+                                        onClick={() => {
+                                          setConstructionProject(
+                                            item.properties.coid
+                                          );
+                                          setProName(
+                                            item.properties.co_name_eng
+                                          );
+                                          setProjectCoordinates(item.properties.north);
+                                          setProjectCoordinates1(item.properties.east);
+                                          setProjectName(item.properties.co_name_eng);
+                                          setProjectDescription(
+                                            item.properties.description_eng
+                                          );
+                                          setprojectPosition(true);
+                                          setAreaGov(false);
+                                        }}
+                                      >
+                                        {item.properties.co_name_eng}
+                                      </li>
+                                    </>
+                                  );
+                                } else if (
+                                  item.properties.area_id.toString() === govid
+                                ) {
+                                  return (
+                                    <>
+                                      <li
+                                        className="cursor-pointer hover:bg-[#9d3039]/20 max-w-xs text-sm py-2 border-b border-white/30"
+                                        onClick={() => {
+                                          setConstructionProject(
+                                            item.properties.coid
+                                          );
+                                          setProName(
+                                            item.properties.co_name_eng
+                                          );
+                                          setProjectCoordinates(
+                                            item.geometry.coordinates[1]
+                                          );
+                                          setProjectCoordinates1(
+                                            item.geometry.coordinates[0]
+                                          );
+                                          setProjectName(item.properties.co_name_eng);
+                                          setProjectDescription(
+                                            item.properties.description_eng
+                                          );
+                                          setprojectPosition(true);
+                                          setAreaGov(false);
+                                        }}
+                                      >
+                                        {item.properties.co_name_eng}
+                                      </li>
+                                    </>
+                                  );
+                                }
+                              })}
+                            </ul>
+                          )}
+                     
+                        </>
+                      ) : construction ? (
+                        <>
+                          <div className="flex justify-center max-w-xs cursor-pointer" onClick={() => setShowOptions(true)}>
+                            <input
+                              type="text"
+                              id="myInput"
+                              onChange={(e) => myFunction()}
+                              placeholder={proName}
+                              className="w-[250px] max-w-xs p-1 outline-none m-1 mb-2 bg-transparent border-b"
+                              
+                            />
+                            <IoIosArrowDown
+                              className=" mt-3 "
+                            />
+                          </div>
+                          {showOptions && (
+                            <ul
+                              id="myUL"
+                              style={{ height: "200px", overflowY: "scroll" }}
+                              className="no-scrollbar bg-white/20"
+                            >
+                              {Construction.features.map((item) => {
+                                if (
+                                  item.properties.gov_id.toString() ===
+                                  govid
+                                ) {
+                                  return (
+                                    <>
+                                      <li
+                                        className="cursor-pointer hover:bg-[#9d3039]/20 max-w-xs text-sm py-2 border-b border-white/30"
+                                        onClick={() => {
+                                          setConstructionProject(
+                                            item.properties.cid
+                                          );
+                                          setProName(
+                                            item.properties.co_name_eng
+                                          );
+                                          setProjectCoordinates(
+                                            item.geometry.coordinates[1]
+                                          );
+                                          setProjectCoordinates1(
+                                            item.geometry.coordinates[0]
+                                          );
+                                          setProjectName(item.properties.co_name_eng);
+                                          setProjectDescription(
+                                            item.properties.description_eng
+                                          );
+                                          setprojectPosition(true);
+                                          setAreaGov(false);
+                                        }}
+                                      >
+                                        {item.properties.co_name_eng}
+                                      </li>
+                                    </>
+                                  );
+                                } else if (
+                                  item.properties.area_id.toString() === govid
+                                ) {
+                                  return (
+                                    <>
+                                      <li
+                                        className="cursor-pointer hover:bg-[#9d3039]/20 max-w-xs text-sm py-2 border-b border-white/30"
+                                        onClick={() => {
+                                          setConstructionProject(
+                                            item.properties.cid
+                                          );
+                                          setProName(
+                                            item.properties.co_name_eng
+                                          );
+                                          setProjectCoordinates(
+                                            item.geometry.coordinates[1]
+                                          );
+                                          setProjectCoordinates1(
+                                            item.geometry.coordinates[0]
+                                          );
+                                          setProjectName(item.properties.co_name_eng);
+                                          setProjectDescription(
+                                            item.properties.description_eng
+                                          );
+                                          setprojectPosition(true);
+                                          setAreaGov(false);
+                                        }}
+                                      >
+                                        {item.properties.co_name_eng}
+                                      </li>
+                                    </>
+                                  );
+                                }
+                              })}
+                            </ul>
+                          )}
+                        </>
+                      ) : station ? (
+                        <>
+                          <div className="flex justify-center max-w-xs cursor-pointer" onClick={() => setShowOptions(true)}>
+                            <input
+                              type="text"
+                              id="myInput"
+                              onChange={(e) => myFunction()}
+                              placeholder={proName}
+                              className="w-[250px] max-w-xs p-1 outline-none m-1 mb-2 bg-transparent border-b"
+                              
+                            />
+                            <IoIosArrowDown
+                              className=" mt-3 "
+                            />
+                          </div>
+                          {showOptions && (
+                            <ul
+                              id="myUL"
+                              style={{ height: "200px", overflowY: "scroll" }}
+                              className="no-scrollbar bg-white/20"
+                            >
+                              {Station.features.map((item) => {
+                                if (
+                                  item.properties.gove_numbe.toString() ===
+                                  govid
+                                ) {
+                                  return (
+                                    <>
+                                      <li
+                                        className="cursor-pointer hover:bg-[#9d3039]/20 max-w-xs text-sm py-2 border-b border-white/30"
+                                        onClick={() => {
+                                          setConstructionProject(
+                                            item.properties.cid
+                                          );
+                                          setProName(
+                                            item.properties.st_name_eng
+                                          );
+                                          setProjectCoordinates(
+                                            item.geometry.coordinates[0][1]
+                                          );
+                                          setProjectCoordinates1(
+                                            item.geometry.coordinates[0][0]
+                                          );
+                                          setProjectName(item.properties.st_name_eng);
+                                          setProjectDescription(
+                                            item.properties.description_eng
+                                          );
+                                          setprojectPosition(true);
+                                          setAreaGov(false);
+                                        }}
+                                      >
+                                        {item.properties.st_name_eng}
+                                      </li>
+                                    </>
+                                  );
+                                } else if (
+                                  item.properties.area_id.toString() === govid
+                                ) {
+                                  return (
+                                    <>
+                                      <li
+                                        className="cursor-pointer hover:bg-[#9d3039]/20 max-w-xs text-sm py-2 border-b border-white/30"
+                                        onClick={() => {
+                                          setConstructionProject(
+                                            item.properties.cid
+                                          );
+                                          setProName(
+                                            item.properties.st_name_eng
+                                          );
+                                          setProjectCoordinates(
+                                            item.geometry.coordinates[0][1]
+                                          );
+                                          setProjectCoordinates1(
+                                            item.geometry.coordinates[0][0]
+                                          );
+                                          setProjectName(item.properties.st_name_eng);
+                                          setProjectDescription(
+                                            item.properties.description_eng
+                                          );
+                                          setprojectPosition(true);
+                                          setAreaGov(false);
+                                        }}
+                                      >
+                                        {item.properties.st_name_eng}
+                                      </li>
+                                    </>
+                                  );
+                                }
+                              })}
+                            </ul>
+                          )}
+                        </>
+                      ) : mega ? (
+                        <>
+                          <div className="flex justify-center max-w-xs cursor-pointer" onClick={() => setShowOptions(true)}>
+                            <input
+                              type="text"
+                              id="myInput"
+                              onChange={(e) => myFunction()}
+                              placeholder={proName}
+                              className="w-[250px] max-w-xs p-1 outline-none m-1 mb-2 bg-transparent border-b"
+                              
+                            />
+                            <IoIosArrowDown
+                              className=" mt-3 "
+                            />
+                          </div>
+                          {showOptions && (
+                            <ul
+                              id="myUL"
+                              style={{ height: "200px", overflowY: "scroll" }}
+                              className="no-scrollbar bg-white/20"
+                            >
+                              {Mega.features.map((item) => {
+                                if (
+                                  item.properties.gov_id.toString() ===
+                                  govid
+                                ) {
+                                  return (
+                                    <>
+                                      <li
+                                        className="cursor-pointer hover:bg-[#9d3039]/20 max-w-xs text-sm py-2 border-b border-white/30"
+                                        onClick={() => {
+                                          setConstructionProject(
+                                            item.properties.cid
+                                          );
+                                          setProName(
+                                            item.properties.co_name_eng
+                                          );
+                                          setProjectCoordinates(
+                                            item.geometry.coordinates[0][1]
+                                          );
+                                          setProjectCoordinates1(
+                                            item.geometry.coordinates[0][0]
+                                          );
+                                          setProjectName(item.properties.co_name_eng);
+                                          setProjectDescription(
+                                            item.properties.description_eng
+                                          );
+                                          setprojectPosition(true);
+                                          setAreaGov(false);
+                                        }}
+                                      >
+                                        {item.properties.co_name_eng}
+                                      </li>
+                                    </>
+                                  );
+                                } else if (
+                                  item.properties.area_id.toString() === govid
+                                ) {
+                                  return (
+                                    <>
+                                      <li
+                                        className="cursor-pointer hover:bg-[#9d3039]/20 max-w-xs text-sm py-2 border-b border-white/30"
+                                        onClick={() => {
+                                          setConstructionProject(
+                                            item.properties.cid
+                                          );
+                                          setProName(
+                                            item.properties.co_name_eng
+                                          );
+                                          setProjectCoordinates(
+                                            item.geometry.coordinates[0][1]
+                                          );
+                                          setProjectCoordinates1(
+                                            item.geometry.coordinates[0][0]
+                                          );
+                                          setProjectName(item.properties.co_name_eng);
+                                          setProjectDescription(
+                                            item.properties.description_eng
+                                          );
+                                          setprojectPosition(true);
+                                          setAreaGov(false);
+                                        }}
+                                      >
+                                        {item.properties.co_name_eng}
+                                      </li>
+                                    </>
+                                  );
+                                }
+                              })}
+                            </ul>
+                          )}
+                        </>
+                      ) : (
+                        <></>
+                      )}
                     </div>
                   </li>
                 </>
