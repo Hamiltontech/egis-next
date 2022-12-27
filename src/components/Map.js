@@ -50,7 +50,10 @@ export default function Map({
   construction,
   areaGov,
   setAreaGov,
-  zoom, setZoom
+  zoom,
+  setZoom,
+  proImage,
+  setProImage,
 }) {
   var greenIcon = L.icon({
     iconUrl: "https://i.imgur.com/ld3rkCP.png",
@@ -59,6 +62,7 @@ export default function Map({
     popupAnchor: [0, -100],
   });
 
+  console.log(proImage);
   function onEachConstruction(construction, layer) {
     const COProjectName = construction.properties.co_name_eng;
     const COProjectDescription = construction.properties.description_eng;
@@ -132,7 +136,7 @@ export default function Map({
       } else {
         setPosition([projectCoordinated, projectCoordinated1]);
         map.flyTo([projectCoordinated, projectCoordinated1], map.getZoom(), 15);
-      } 
+      }
     }, [projectCoordinated]);
 
     return position === null ? null : (
@@ -140,20 +144,27 @@ export default function Map({
         <Marker position={position} icon={greenIcon}>
           <Popup>
             {areaGov ? (
-              <h1 className="font-extrabold mt-5 p-4 font-tajwal">You Are Here</h1>
+              <h1 className="font-extrabold mt-5 p-4 font-tajwal">
+                You Are Here
+              </h1>
             ) : projectPosition ? (
               <>
-                <h1 className="font-extrabold mt-5 p-4 text-center font-tajwal">
-                  {" "}
+                <div>
+                  <img src={proImage} height={200} width={400} />
+                </div>
+                <h1 className="font-extrabold  p-4 text-center font-tajwal">
+       
                   {projectName}
                 </h1>
                 <hr />
                 <h1 className="font-extrabold mt-5 text-center p-4 font-tajwal">
-                  {projectDescription}{" "}
+                  {projectDescription}
                 </h1>
               </>
             ) : (
-              <h1 className="font-extrabold mt-5 font-tajwal p-4">You Are Here</h1>
+              <h1 className="font-extrabold mt-5 font-tajwal p-4">
+                You Are Here
+              </h1>
             )}
           </Popup>
         </Marker>
@@ -183,7 +194,6 @@ export default function Map({
 
   return (
     <div className=" flex relative mt-[69.38px]" id="map">
-
       <MapContainer
         center={[47.4818, 29.3117]}
         zoom={9}

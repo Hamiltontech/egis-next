@@ -21,7 +21,7 @@ const MyMap = dynamic(() => import("../src/components/Map"), {
 export default function Home() {
   
 const [zoom, setZoom] = useState(9)
-
+const [proImage, setProImage] = useState("")
   const [sanitary, setSanitary] = useState(false);
   const [construction, setConstruction] = useState(false);
   const [station, setStation] = useState(false);
@@ -118,7 +118,8 @@ const [zoom, setZoom] = useState(9)
             projectPosition={projectPosition} 
             setprojectPosition={setprojectPosition}
             areaGov={areaGov} setAreaGov={setAreaGov}
-            
+            proImage={proImage}
+            setProImage={setProImage}
           />
         </div>
         </div>
@@ -139,7 +140,10 @@ const [zoom, setZoom] = useState(9)
             projectPosition={projectPosition} 
             setprojectPosition={setprojectPosition}
             construction={construction}
-            areaGov={areaGov} setAreaGov={setAreaGov}
+            areaGov={areaGov} 
+            setAreaGov={setAreaGov}
+            proImage={proImage}
+            setProImage={setProImage}
           />
     
           {/* legends */}

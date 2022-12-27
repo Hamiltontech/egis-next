@@ -41,11 +41,13 @@ const Sidebar = ({
   setAreaGov,
   zoom,
   setZoom,
+  proImage, setProImage
 }) => {
   const [constructionProject, setConstructionProject] = useState("");
   const [ShowAdvanced, setShowAdvanced] = useState(true);
   const [proName, setProName] = useState("Search..");
-  console.log(constructionProject);
+
+
   const slideLeft = () => {
     var slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft - 210;
@@ -749,6 +751,8 @@ const Sidebar = ({
                                           );
                                           setprojectPosition(true);
                                           setAreaGov(false);
+                                          setProImage("https://geo1.esmrts.com/image/" +
+                                          item.properties.image1)
                                         }}
                                       >
                                         {item.properties.co_name_eng}
@@ -781,6 +785,8 @@ const Sidebar = ({
                                           );
                                           setprojectPosition(true);
                                           setAreaGov(false);
+                                          setProImage("https://geo1.esmrts.com/image/" +
+                                          item.properties.image1)
                                         }}
                                       >
                                         {item.properties.co_name_eng}
@@ -842,6 +848,8 @@ const Sidebar = ({
                                           );
                                           setprojectPosition(true);
                                           setAreaGov(false);
+                                          setProImage("https://geo1.esmrts.com/image/" +
+                                          item.properties.image1)
                                         }}
                                       >
                                         {item.properties.co_name_eng}
@@ -874,6 +882,8 @@ const Sidebar = ({
                                           );
                                           setprojectPosition(true);
                                           setAreaGov(false);
+                                          setProImage("https://geo1.esmrts.com/image/" +
+                                          item.properties.image1)
                                         }}
                                       >
                                         {item.properties.co_name_eng}
@@ -934,6 +944,8 @@ const Sidebar = ({
                                           );
                                           setprojectPosition(true);
                                           setAreaGov(false);
+                                          setProImage("https://geo1.esmrts.com/image/" +
+                                          item.properties.image1)
                                         }}
                                       >
                                         {item.properties.st_name_eng}
@@ -966,6 +978,8 @@ const Sidebar = ({
                                           );
                                           setprojectPosition(true);
                                           setAreaGov(false);
+                                          setProImage("https://geo1.esmrts.com/image/" +
+                                          item.properties.image1)
                                         }}
                                       >
                                         {item.properties.st_name_eng}
@@ -1026,6 +1040,8 @@ const Sidebar = ({
                                           );
                                           setprojectPosition(true);
                                           setAreaGov(false);
+                                          setProImage("https://geo1.esmrts.com/image/" +
+                                          item.properties.image1)
                                         }}
                                       >
                                         {item.properties.co_name_eng}
@@ -1058,6 +1074,8 @@ const Sidebar = ({
                                           );
                                           setprojectPosition(true);
                                           setAreaGov(false);
+                                          setProImage("https://geo1.esmrts.com/image/" +
+                                          item.properties.image1)
                                         }}
                                       >
                                         {item.properties.co_name_eng}
