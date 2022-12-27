@@ -58,7 +58,7 @@ export default function Map({
   var greenIcon = L.icon({
     iconUrl: "https://i.imgur.com/ld3rkCP.png",
     iconSize: [70, 70],
-    iconAnchor: [22, 94],
+    iconAnchor: [15, 40],
     popupAnchor: [0, -100],
   });
 
