@@ -17,10 +17,10 @@ const Header = ({ setShow, show, setAbout, about, info, setTech, tech }) => {
           : "flex lg:bg-[#162641] w-full p-2 justify-between header-sys "
       }
     >
-      <div className="flex justify-between bg-[#162641] lg:bg-transparent p-4 rounded-full lg:p-0 lg:rounded-none shadow-xl">
+      <div className={show?  `flex justify-between bg-white lg:bg-transparent p-4 rounded-full lg:p-0 lg:rounded-none shadow-xl`: `flex justify-between bg-[#162641] lg:bg-transparent p-4 rounded-full lg:p-0 lg:rounded-none shadow-xl`}>
         <button onClick={() => setShow(!show)} className=" hover:scale-105 ">
           <AiOutlineMenu size={25} className="text-white lg:mt-3 lg:mr-4 hidden lg:block" />
-          <VscSearch size={22} color="white" className="lg:hidden "/>
+          <VscSearch size={22}  className={show?'lg:hidden text-[#162641]' :`lg:hidden text-white`}/>
         </button>
         <Image src={logo} alt="logo" width={220} height={100} className="hidden lg:block"/>
       </div>
