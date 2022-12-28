@@ -129,7 +129,7 @@ const Sidebar = ({
             <ul className="flex flex-col py-4 space-y-1">
               {/* images section */}
               <li className="px-1 ">
-                <div className="flex flex-row items-center h-8">
+                <div className="flex flex-row items-center h-8 mt-10">
                   <div className="text-xs tracking-wide text-white/70 uppercase">
                     Project Images
                   </div>
@@ -1088,12 +1088,7 @@ const Sidebar = ({
 
               {/* end of search project */}
               <br />
-
-              {/* <div className="flex items-center justify-center mx-4 h-10 text-[14px] cursor-pointer hover:text-white/50 ease-in-out duration-150">
-              
-              </div> */}
-
-              <div>
+              <div className="hidden lg:block">
                 <button
                   onClick={() => {
                     setConstruction(false);
@@ -1105,7 +1100,7 @@ const Sidebar = ({
                     setProjectCoordinates(29.3117);
                     setProjectCoordinates1(47.4818);
                   }}
-                  className="bg-[#9d3039] p-1 w-[250px] hover:bg-[#9d3039]/70 ease-in-out duration-200"
+                  className="bg-[#9d3039] p-1 w-[250px] hover:bg-[#9d3039]/70 ease-in-out duration-200 "
                 >
                   Clear Search
                 </button>
@@ -1117,18 +1112,19 @@ const Sidebar = ({
                     Print
                   </button>
                 </div>
-              </div>
-
-              <div>
+                <div>
                 <button
-                  className="bg-[#9d3039] p-1 w-[250px] mb-5 hover:bg-[#9d3039]/70 ease-in-out duration-200"
+                  className="bg-[#9d3039] mt-1 p-1 w-[250px] mb-5 hover:bg-[#9d3039]/70 ease-in-out duration-200   "
                   onClick={() => setInfo(true)}
                 >
                   Need Help ?
                 </button>
               </div>
+              </div>
 
-              <div className="flex justify-center gap-2 mt-2 text-md ">
+              
+
+              <div className="lg:flex justify-center gap-2 mt-2 text-md hidden ">
                 <a
                   href="https://egis-ar.vercel.app/"
                   className="hover:text-white/50 ease-in-out duration-150 p-1"
@@ -1136,43 +1132,12 @@ const Sidebar = ({
                   العربية
                 </a>
               </div>
-              <div className="flex items-center justify-center mx-4 text-[11px]">
+              <div className="lg:flex items-center justify-center mx-4 text-[11px] hidden">
                 All Rights Reserved 2021 © Ministry of Public Works
               </div>
             </ul>
 
-            <hr className="mx-4" />
-            <div className="grid grid-cols-2 text-xs justify-between py-4 lg:hidden">
-              <div className="flex pt-2 ">
-                <FaMapMarkerAlt size={15} className="text-blue-500" />
-                <p className="mx-1">Stations</p>
-              </div>
 
-              <div className="flex pt-2">
-                <FaMapMarkerAlt size={15} className="text-red-600 " />
-                <p className=" mx-1">Construction</p>
-              </div>
-
-              <div className="flex pt-2 ">
-                <FaGripLinesVertical size={15} className="text-blue-400" />
-                <p className="mx-1">Pipe</p>
-              </div>
-
-              <div className="flex pt-2  ">
-                <BsCircleFill size={15} className="text-gray-200" />
-                <p className="mx-1 ">Manhole</p>
-              </div>
-
-              <div className="flex pt-2">
-                <FaArrowUp size={15} className="text-orange-400" />
-                <p className="mx-1">Flow Direction</p>
-              </div>
-
-              <div className="flex pt-2 ">
-                <BsSquareFill size={15} className="text-orange-400 mr-1" />
-                <p className="">House Connection</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>

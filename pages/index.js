@@ -69,8 +69,8 @@ const [proImage, setProImage] = useState("")
         <div
           className={
             show
-              ? ` sm:w-[300px] bg-[#162641] z-40 mt-[69.38px] ease-in-out duration-500 h-screen overflow-y-scroll overflow-x-hidden scrollbar-hide`
-              : `w-0 ease-in-out duration-500 bg-[#162641] mt-[69.38px]`
+              ? ` sm:w-[300px] lg:mt-[69.3px] z-40 ease-in-out duration-500 h-screen overflow-y-scroll overflow-x-hidden scrollbar-hide`
+              : `w-0 ease-in-out duration-500  `
           }
         >
           <Sidebar

@@ -193,3 +193,10 @@
 	line-height: 30px;
 	}
 
+    @media only screen and (max-width: 600px) {
+        .leaflet-control-layers {
+            box-shadow: 0 1px 5px rgb(0 0 0 / 40%);
+            background: #fff;
+            border-radius: 100% !important;
+        }
+      }
