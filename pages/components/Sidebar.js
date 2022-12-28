@@ -17,7 +17,6 @@ import { MdChevronRight, MdChevronLeft } from "react-icons/md";
 
 const Sidebar = ({
   show,
-  setShow,
   govid,
   setGovid,
   sanitary,
@@ -28,25 +27,22 @@ const Sidebar = ({
   setStation,
   mega,
   setMega,
-  projectCoordinated,
-  setProjectCoordinates,
   setProjectCoordinates1,
+  setProjectCoordinates,
   setProjectDescription,
   setProjectName,
   setInfo,
   info,
-  projectPosition,
   setprojectPosition,
-  areaGov,
   setAreaGov,
-  zoom,
-  setZoom,
-  proImage, setProImage
+ setProImage
 }) => {
   const [constructionProject, setConstructionProject] = useState("");
+  const [showOptions, setShowOptions] = useState(false);
   const [ShowAdvanced, setShowAdvanced] = useState(true);
   const [proName, setProName] = useState("Search..");
-
+  const [gov, setGov] = useState(false);
+  const [area, setArea] = useState(false);
 
   const slideLeft = () => {
     var slider = document.getElementById("slider");
@@ -57,10 +53,6 @@ const Sidebar = ({
     var slider = document.getElementById("slider");
     slider.scrollLeft = slider.scrollLeft + 210;
   };
-
-  // check uncheck the gov and area
-  const [gov, setGov] = useState(false);
-  const [area, setArea] = useState(false);
 
   const govCheck = () => {
     setGov(!gov);
@@ -108,9 +100,6 @@ const Sidebar = ({
       setStation(false);
     }
   };
-
-  // search filter function
-  const [showOptions, setShowOptions] = useState(false);
 
   function myFunction() {
     var input, filter, ul, li, a, i, txtValue;
@@ -171,6 +160,7 @@ const Sidebar = ({
                           <>
                             <div className="lg:hidden">
                               <Image
+                              alt="/"
                                 src={
                                   "https://geo1.esmrts.com/image/" +
                                   item.properties.image1
@@ -241,6 +231,7 @@ const Sidebar = ({
                           <>
                             <div className="lg:hidden">
                               <Image
+                              alt="/"
                                 src={
                                   "https://geo1.esmrts.com/image/" +
                                   item.properties.image1

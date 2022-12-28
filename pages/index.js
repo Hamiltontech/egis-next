@@ -1,26 +1,21 @@
 import Head from "next/head";
 import Header from "./components/Header";
-import Search from "./components/Search";
 import Sidebar from "./components/Sidebar";
 import { React, useState, useEffect } from "react";
 import Areas from "../public/data/area.json";
 import Govs from "../public/data/gov.json";
 import Legends from "./components/Legends";
-import AboutSection from "./components/AboutSection";
 import About from "./About";
 import { AiOutlineClose } from "react-icons/ai";
 import Info from "./Info";
 import Technical from "./Technical";
 import dynamic from "next/dynamic";
 
-
 const MyMap = dynamic(() => import("../src/components/Map"), {
   ssr: false
 });
 
 export default function Home() {
-  
-const [zoom, setZoom] = useState(9)
 const [proImage, setProImage] = useState("")
   const [sanitary, setSanitary] = useState(false);
   const [construction, setConstruction] = useState(false);
@@ -29,16 +24,9 @@ const [proImage, setProImage] = useState("")
   const [show, setShow] = useState(false);
   const [about, setAbout] = useState(false);
   const [info, setInfo] = useState(false);
-
-  const handleShow = (e) => {
-    e.preventDefault();
-    setShow(!show);
-  };
-
   const [tech, setTech] = useState(false)
   const [areaGov, setAreaGov] = useState(false)
   const [position, setPosition] = useState(null);
-
   const [govid, setGovid] = useState(0);
   const [govzone, setGovZone] = useState(29.3117);
   const [govzone1, setGovZone1] = useState(47.4818);
@@ -48,7 +36,6 @@ const [proImage, setProImage] = useState("")
   const [projectCoordinated1, setProjectCoordinates1] = useState(47.4818)
   const [projectName,setProjectName] = useState("")
   const [projectDescription, setProjectDescription] = useState("")
-
   const [projectPosition, setprojectPosition] = useState(false);
 
   useEffect(() => {
@@ -69,9 +56,6 @@ const [proImage, setProImage] = useState("")
     });
   }, [govid]);
 
-
-  
-
   return (
     <div className="overflow-y-hidden font-tajwal">
       <Head>
@@ -79,11 +63,8 @@ const [proImage, setProImage] = useState("")
       <meta name="description" content="نظام مستكشف المشاريع الجغرافية وزارة الأشغال العامة الكويت" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Header tech={tech} setShow={setShow} show={show} setAbout={setAbout} about={about} info={info} setTech={setTech}/>
-
       <div className={"flex ease-in-out duration-500"}>
-
         <div className={info? "hidden" :about? "hidden": tech? "hidden": "block"}>
         <div
           className={
@@ -117,16 +98,15 @@ const [proImage, setProImage] = useState("")
             info={info}
             projectPosition={projectPosition} 
             setprojectPosition={setprojectPosition}
-            areaGov={areaGov} setAreaGov={setAreaGov}
+            areaGov={areaGov} 
+            setAreaGov={setAreaGov}
             proImage={proImage}
             setProImage={setProImage}
           />
         </div>
         </div>
         {/* <Search /> */}
-
         <div className={about ? "hidden" :info? 'hidden' :tech? "hidden" : "w-full h-full"}>
-       
           <MyMap 
             govzone={govzone}
             govzone1={govzone1}
@@ -145,8 +125,6 @@ const [proImage, setProImage] = useState("")
             proImage={proImage}
             setProImage={setProImage}
           />
-    
-          {/* legends */}
           <div className="hidden lg:block">
           <Legends />
           </div>
@@ -199,7 +177,6 @@ const [proImage, setProImage] = useState("")
             </div>
           </div>
           }
-
 {tech&&
 <div className="w-full h-full bg-[#162641] ">
             <div
@@ -224,7 +201,6 @@ const [proImage, setProImage] = useState("")
             </div>
           </div>
           }
-
       </div>
     </div>
   );

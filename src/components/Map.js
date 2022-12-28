@@ -26,15 +26,6 @@ import MarkerClusterGroup from "react-leaflet-markercluster";
 import VectorTileLayer from "react-esri-leaflet/plugins/VectorTileLayer";
 import VectorBasemapLayer from "react-esri-leaflet/plugins/VectorBasemapLayer";
 
-const mbUrl3 =
-  "https://tiles.arcgis.com/tiles/2zwTmDUxTzTVBytU/arcgis/rest/services/KuwaitFinder3Basemap/VectorTileServer?f=jsapi&cacheKey=9919458153afac15";
-const apiKey =
-  "AAPK1f12d3f9f7e0446b97bd5fad297b62dfNs64weAwjHl0BHUdtKX9GisBgUj4312WkhiIHfzTuTes26tENgAO6tBOGEErF-0r";
-const basemapEnum = "ArcGIS:Streets";
-
-var wmsLayerString =
-  "Sample_Data:Connection_File,Sample_Data:Station_Buildings,Sample_Data:Pipe_Line,Sample_Data:House_Pipe,Sample_Data:House_connection,Sample_Data:Manhole_Final,Sample_Data:Construction_projects_Poly,Sample_Data:Governorate,Sample_Data:Gov_Polyline,Sample_Data:Area,Sample_Data:FlowDirectionFinal";
-
 // component
 export default function Map({
   govzone,
@@ -55,6 +46,11 @@ export default function Map({
   proImage,
   setProImage,
 }) {
+  const apiKey =
+    "AAPK1f12d3f9f7e0446b97bd5fad297b62dfNs64weAwjHl0BHUdtKX9GisBgUj4312WkhiIHfzTuTes26tENgAO6tBOGEErF-0r";
+  var wmsLayerString =
+    "Sample_Data:Connection_File,Sample_Data:Station_Buildings,Sample_Data:Pipe_Line,Sample_Data:House_Pipe,Sample_Data:House_connection,Sample_Data:Manhole_Final,Sample_Data:Construction_projects_Poly,Sample_Data:Governorate,Sample_Data:Gov_Polyline,Sample_Data:Area,Sample_Data:FlowDirectionFinal";
+
   var greenIcon = L.icon({
     iconUrl: "https://i.imgur.com/ld3rkCP.png",
     iconSize: [70, 70],
@@ -62,20 +58,10 @@ export default function Map({
     popupAnchor: [0, -100],
   });
 
-  console.log(proImage);
   function onEachConstruction(construction, layer) {
     const COProjectName = construction.properties.co_name_eng;
     const COProjectDescription = construction.properties.description_eng;
-    const COProjectImage1 =
-      "https://geo1.esmrts.com/image/" + construction.properties.image1;
-    const COProjectImage2 =
-      "https://geo1.esmrts.com/image/" + construction.properties.image2;
-    const COProjectImage3 =
-      "https://geo1.esmrts.com/image/" + construction.properties.image3;
-    const COProjectImage4 =
-      "https://geo1.esmrts.com/image/" + construction.properties.image4;
-    const CoXY = construction.properties.coordinates;
-
+    const COProjectImage1 = "https://geo1.esmrts.com/image/" + construction.properties.image1;
     layer.bindPopup(
       `
       <div style="font-family: 'Tajawal', sans-serif;">
@@ -95,14 +81,7 @@ export default function Map({
   function onEachSPF(spf, layer) {
     const SPFProjectName = spf.properties.st_name_eng;
     const COProjectDescription = spf.properties.description_eng;
-    const COProjectImage1 =
-      "https://geo1.esmrts.com/image/" + spf.properties.image1;
-    const COProjectImage2 =
-      "https://geo1.esmrts.com/image/" + spf.properties.image2;
-    const COProjectImage3 =
-      "https://geo1.esmrts.com/image/" + spf.properties.image3;
-    const COProjectImage4 =
-      "https://geo1.esmrts.com/image/" + spf.properties.image4;
+    const COProjectImage1 = "https://geo1.esmrts.com/image/" + spf.properties.image1;
     layer.bindPopup(
       `
       <div style="font-family: 'Tajawal', sans-serif;">
@@ -153,7 +132,6 @@ export default function Map({
                   <img src={proImage} height={200} width={400} />
                 </div>
                 <h1 className="font-extrabold text-lg p-4 text-center font-tajwal">
-       
                   {projectName}
                 </h1>
                 <hr />
@@ -185,12 +163,6 @@ export default function Map({
     iconAnchor: [15, 40],
     popupAnchor: [0, -100],
   });
-  function createMarker(feature, latlng) {
-    return markers.addLayer(L.marker(latlng, { icon: constructionIcon }));
-  }
-  function createMarkerstation(feature, latlng) {
-    return markers.addLayer(L.marker(latlng, { icon: stationIcon }));
-  }
 
   return (
     <div className=" flex relative mt-[69.38px]" id="map">
