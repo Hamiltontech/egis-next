@@ -152,7 +152,7 @@ export default function Map({
                 <div>
                   <img src={proImage} height={200} width={400} />
                 </div>
-                <h1 className="font-extrabold  p-4 text-center font-tajwal">
+                <h1 className="font-extrabold text-lg p-4 text-center font-tajwal">
        
                   {projectName}
                 </h1>
