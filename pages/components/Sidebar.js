@@ -121,7 +121,7 @@ const Sidebar = ({
     <div className={info ? "hidden" : "text-center h-screen bg-[#162641]"}>
       <div className=" flex flex-col flex-auto min-h-screen text-white duration-500 ease-in-out bg-[#162641] ">
         <div
-          className={` sm:w-[300px] bg-[#162641] p-1  h-full z-40 ease-in-out duration-500 w-full  ${
+          className={` sm:w-[300px] bg-[#162641] p-1  h-full z-40 ease-in-out duration-500 w-[300px]  ${
             show ? "translate-x-30 " : "-translate-x-full"
           }`}
         >
@@ -129,7 +129,7 @@ const Sidebar = ({
             <ul className="flex flex-col py-4 space-y-1">
               {/* images section */}
               <li className="px-1 ">
-                <div className="flex flex-row items-center h-8 mt-10">
+                <div className="flex flex-row items-center h-8 mt-20 lg:mt-4">
                   <div className="text-xs tracking-wide text-white/70 uppercase">
                     Project Images
                   </div>

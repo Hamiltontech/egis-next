@@ -199,4 +199,7 @@
             background: #fff;
             border-radius: 100% !important;
         }
+        .leaflet-control-layers.leaflet-control.leaflet-control-layers-expanded {
+            border-radius: 0px !important;
+        }
       }
