@@ -28,23 +28,15 @@ import VectorBasemapLayer from "react-esri-leaflet/plugins/VectorBasemapLayer";
 
 // component
 export default function Map({
-  govzone,
   areazone,
   areazone1,
-  govzone1,
   projectCoordinated,
   projectCoordinated1,
   projectDescription,
   projectName,
   projectPosition,
-  setprojectPosition,
-  construction,
   areaGov,
-  setAreaGov,
-  zoom,
-  setZoom,
   proImage,
-  setProImage,
 }) {
   const apiKey =
     "AAPK1f12d3f9f7e0446b97bd5fad297b62dfNs64weAwjHl0BHUdtKX9GisBgUj4312WkhiIHfzTuTes26tENgAO6tBOGEErF-0r";
@@ -55,7 +47,19 @@ export default function Map({
     iconUrl: "https://i.imgur.com/ld3rkCP.png",
     iconSize: [70, 70],
     iconAnchor: [15, 40],
-    popupAnchor: [0, -100],
+    popupAnchor: [30, -30],
+  });
+  var constructionIcon = L.icon({
+    iconUrl: "https://i.imgur.com/jR1ZGvi.png",
+    iconSize: [30, 30],
+    iconAnchor: [15, 40],
+    popupAnchor: [0, -40],
+  });
+  var stationIcon = L.icon({
+    iconUrl: "https://i.imgur.com/4LWG8pQ.png",
+    iconSize: [30, 30],
+    iconAnchor: [15, 40],
+    popupAnchor: [0, -40],
   });
 
   function onEachConstruction(construction, layer) {
@@ -149,20 +153,6 @@ export default function Map({
       </>
     );
   }
-
-  const markers = L.markerClusterGroup();
-  var constructionIcon = L.icon({
-    iconUrl: "https://i.imgur.com/jR1ZGvi.png",
-    iconSize: [30, 30],
-    iconAnchor: [15, 40],
-    popupAnchor: [0, -100],
-  });
-  var stationIcon = L.icon({
-    iconUrl: "https://i.imgur.com/4LWG8pQ.png",
-    iconSize: [30, 30],
-    iconAnchor: [15, 40],
-    popupAnchor: [0, -100],
-  });
 
   return (
     <div className=" flex relative mt-[69.38px]" id="map">

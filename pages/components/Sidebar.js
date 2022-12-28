@@ -1,4 +1,4 @@
-import { React, use, useEffect, useState } from "react";
+import { React, useState } from "react";
 import { GoLocation } from "react-icons/go";
 import { CiLocationArrow1 } from "react-icons/ci";
 import { BsPinMap, BsMap } from "react-icons/bs";
@@ -7,11 +7,9 @@ import Construction from "../../public/data/Construction_projects.json";
 import Station from "../../public/data/Station_Point_Final.json";
 import Mega from "../../public/data/Mega_projects.json";
 import Areas from "../../public/data/area.json";
-import Govs from "../../public/data/gov.json";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaMapMarkerAlt, FaGripLinesVertical, FaArrowUp } from "react-icons/fa";
 import { BsCircleFill, BsSquareFill } from "react-icons/bs";
-import { AiOutlineArrowUp } from "react-icons/ai";
 import Image from "next/image";
 import { MdChevronRight, MdChevronLeft } from "react-icons/md";
 
@@ -300,6 +298,7 @@ const Sidebar = ({
                           <>
                             <div className="lg:hidden">
                               <Image
+                              alt="/"
                                 src={
                                   "https://geo1.esmrts.com/image/" +
                                   item.properties.image1
@@ -368,6 +367,7 @@ const Sidebar = ({
                           <>
                             <div className="lg:hidden">
                               <Image
+                              alt="/"
                                 src={
                                   "https://geo1.esmrts.com/image/" +
                                   item.properties.image1

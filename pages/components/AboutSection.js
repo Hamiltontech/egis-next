@@ -16,10 +16,10 @@ const AboutSection = () => {
                     <p className='text-[#162641]/80 font-extralight text-2xl text-center'>on the spot.</p>
 
                     <div className='flex justify-evenly my-20 gap-8'>
-                        <Image src={logo1} width={200} />
-                        <Image src={logo2} width={200} />
-                        <Image src={logo3} width={200} />
-                        <Image src={logo4} width={200} />
+                        <Image src={logo1} width={200} alt="/"/>
+                        <Image src={logo2} width={200} alt="/"/>
+                        <Image src={logo3} width={200} alt="/"/>
+                        <Image src={logo4} width={200} alt="/"/>
                     </div>
                 </div>
 

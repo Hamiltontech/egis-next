@@ -13,7 +13,13 @@
   
   }
 
+  .leaflet-control-attribution.leaflet-control {
+    display: none !important;
+}
 
+.leaflet-popup-close-button{
+    display: none  !important;
+}
   path.leaflet-interactive {
     fill: transparent;
 }
