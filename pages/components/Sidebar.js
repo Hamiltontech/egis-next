@@ -33,7 +33,7 @@ const Sidebar = ({
   info,
   setprojectPosition,
   setAreaGov,
- setProImage
+  setProImage,
 }) => {
   const [constructionProject, setConstructionProject] = useState("");
   const [showOptions, setShowOptions] = useState(false);
@@ -158,7 +158,7 @@ const Sidebar = ({
                           <>
                             <div className="lg:hidden">
                               <Image
-                              alt="/"
+                                alt="/"
                                 src={
                                   "https://geo1.esmrts.com/image/" +
                                   item.properties.image1
@@ -206,7 +206,9 @@ const Sidebar = ({
                                 size={20}
                                 className="text-red-600"
                               />
-                              <h1 className="text-sm max-w-[200px] text-center">{item.properties.co_name_eng}</h1>
+                              <h1 className="text-sm max-w-[200px] text-center">
+                                {item.properties.co_name_eng}
+                              </h1>
                             </div>
                           </>
                         );
@@ -229,7 +231,7 @@ const Sidebar = ({
                           <>
                             <div className="lg:hidden">
                               <Image
-                              alt="/"
+                                alt="/"
                                 src={
                                   "https://geo1.esmrts.com/image/" +
                                   item.properties.image1
@@ -276,9 +278,10 @@ const Sidebar = ({
                                 size={30}
                                 className="text-blue-400"
                               />
-                              <h1 className="text-sm max-w-[200px] text-center">{item.properties.co_name_eng}</h1>
+                              <h1 className="text-sm max-w-[200px] text-center">
+                                {item.properties.co_name_eng}
+                              </h1>
                             </div>
-                           
                           </>
                         );
                       }
@@ -298,7 +301,7 @@ const Sidebar = ({
                           <>
                             <div className="lg:hidden">
                               <Image
-                              alt="/"
+                                alt="/"
                                 src={
                                   "https://geo1.esmrts.com/image/" +
                                   item.properties.image1
@@ -345,9 +348,10 @@ const Sidebar = ({
                                 size={20}
                                 className="text-blue-500"
                               />
-                              <h1 className="text-sm max-w-[200px] text-center">{item.properties.st_name_eng}</h1>
+                              <h1 className="text-sm max-w-[200px] text-center">
+                                {item.properties.st_name_eng}
+                              </h1>
                             </div>
-                           
                           </>
                         );
                       }
@@ -367,7 +371,7 @@ const Sidebar = ({
                           <>
                             <div className="lg:hidden">
                               <Image
-                              alt="/"
+                                alt="/"
                                 src={
                                   "https://geo1.esmrts.com/image/" +
                                   item.properties.image1
@@ -414,9 +418,10 @@ const Sidebar = ({
                                 size={20}
                                 className="text-blue-500"
                               />
-                              <h1 className="text-sm max-w-[200px] text-center">{item.properties.co_name_eng}</h1>
+                              <h1 className="text-sm max-w-[200px] text-center">
+                                {item.properties.co_name_eng}
+                              </h1>
                             </div>
-                           
                           </>
                         );
                       }
@@ -501,14 +506,12 @@ const Sidebar = ({
                             checked={false}
                           />
                         )}
-
                         <label for="area" className="m-1">
                           Area
                         </label>
                       </div>
                     </div>
                   </li>
-
                   <hr className="mx-4" />
 
                   <li>
@@ -674,7 +677,6 @@ const Sidebar = ({
                             checked={false}
                           />
                         )}
-
                         <label for="mega" className="m-1">
                           Mega projects
                         </label>
@@ -699,18 +701,18 @@ const Sidebar = ({
                       {/* sanitary search filter */}
                       {sanitary ? (
                         <>
-                          <div className="flex justify-center max-w-xs cursor-pointer" onClick={() => setShowOptions(true)}>
+                          <div
+                            className="flex justify-center max-w-xs cursor-pointer"
+                            onClick={() => setShowOptions(true)}
+                          >
                             <input
                               type="text"
                               id="myInput"
                               onChange={(e) => myFunction()}
                               placeholder={proName}
                               className="w-[250px] max-w-xs p-1 outline-none m-1 mb-2 bg-transparent border-b"
-                              
                             />
-                            <IoIosArrowDown
-                              className=" mt-3 "
-                            />
+                            <IoIosArrowDown className=" mt-3 " />
                           </div>
                           {showOptions && (
                             <ul
@@ -720,8 +722,7 @@ const Sidebar = ({
                             >
                               {Sanitary.features.map((item) => {
                                 if (
-                                  item.properties.gov_id.toString() ===
-                                  govid
+                                  item.properties.gov_id.toString() === govid
                                 ) {
                                   return (
                                     <>
@@ -734,16 +735,24 @@ const Sidebar = ({
                                           setProName(
                                             item.properties.co_name_eng
                                           );
-                                          setProjectCoordinates(item.properties.north);
-                                          setProjectCoordinates1(item.properties.east);
-                                          setProjectName(item.properties.co_name_eng);
+                                          setProjectCoordinates(
+                                            item.properties.north
+                                          );
+                                          setProjectCoordinates1(
+                                            item.properties.east
+                                          );
+                                          setProjectName(
+                                            item.properties.co_name_eng
+                                          );
                                           setProjectDescription(
                                             item.properties.description_eng
                                           );
                                           setprojectPosition(true);
                                           setAreaGov(false);
-                                          setProImage("https://geo1.esmrts.com/image/" +
-                                          item.properties.image1)
+                                          setProImage(
+                                            "https://geo1.esmrts.com/image/" +
+                                              item.properties.image1
+                                          );
                                         }}
                                       >
                                         {item.properties.co_name_eng}
@@ -765,19 +774,23 @@ const Sidebar = ({
                                             item.properties.co_name_eng
                                           );
                                           setProjectCoordinates(
-                                            item.geometry.coordinates[1]
+                                            item.properties.north
                                           );
                                           setProjectCoordinates1(
-                                            item.geometry.coordinates[0]
+                                            item.properties.east
                                           );
-                                          setProjectName(item.properties.co_name_eng);
+                                          setProjectName(
+                                            item.properties.co_name_eng
+                                          );
                                           setProjectDescription(
                                             item.properties.description_eng
                                           );
                                           setprojectPosition(true);
                                           setAreaGov(false);
-                                          setProImage("https://geo1.esmrts.com/image/" +
-                                          item.properties.image1)
+                                          setProImage(
+                                            "https://geo1.esmrts.com/image/" +
+                                              item.properties.image1
+                                          );
                                         }}
                                       >
                                         {item.properties.co_name_eng}
@@ -788,22 +801,21 @@ const Sidebar = ({
                               })}
                             </ul>
                           )}
-                     
                         </>
                       ) : construction ? (
                         <>
-                          <div className="flex justify-center max-w-xs cursor-pointer" onClick={() => setShowOptions(true)}>
+                          <div
+                            className="flex justify-center max-w-xs cursor-pointer"
+                            onClick={() => setShowOptions(true)}
+                          >
                             <input
                               type="text"
                               id="myInput"
                               onChange={(e) => myFunction()}
                               placeholder={proName}
                               className="w-[250px] max-w-xs p-1 outline-none m-1 mb-2 bg-transparent border-b"
-                              
                             />
-                            <IoIosArrowDown
-                              className=" mt-3 "
-                            />
+                            <IoIosArrowDown className=" mt-3 " />
                           </div>
                           {showOptions && (
                             <ul
@@ -813,8 +825,7 @@ const Sidebar = ({
                             >
                               {Construction.features.map((item) => {
                                 if (
-                                  item.properties.gov_id.toString() ===
-                                  govid
+                                  item.properties.gov_id.toString() === govid
                                 ) {
                                   return (
                                     <>
@@ -833,14 +844,18 @@ const Sidebar = ({
                                           setProjectCoordinates1(
                                             item.geometry.coordinates[0]
                                           );
-                                          setProjectName(item.properties.co_name_eng);
+                                          setProjectName(
+                                            item.properties.co_name_eng
+                                          );
                                           setProjectDescription(
                                             item.properties.description_eng
                                           );
                                           setprojectPosition(true);
                                           setAreaGov(false);
-                                          setProImage("https://geo1.esmrts.com/image/" +
-                                          item.properties.image1)
+                                          setProImage(
+                                            "https://geo1.esmrts.com/image/" +
+                                              item.properties.image1
+                                          );
                                         }}
                                       >
                                         {item.properties.co_name_eng}
@@ -867,14 +882,18 @@ const Sidebar = ({
                                           setProjectCoordinates1(
                                             item.geometry.coordinates[0]
                                           );
-                                          setProjectName(item.properties.co_name_eng);
+                                          setProjectName(
+                                            item.properties.co_name_eng
+                                          );
                                           setProjectDescription(
                                             item.properties.description_eng
                                           );
                                           setprojectPosition(true);
                                           setAreaGov(false);
-                                          setProImage("https://geo1.esmrts.com/image/" +
-                                          item.properties.image1)
+                                          setProImage(
+                                            "https://geo1.esmrts.com/image/" +
+                                              item.properties.image1
+                                          );
                                         }}
                                       >
                                         {item.properties.co_name_eng}
@@ -888,18 +907,18 @@ const Sidebar = ({
                         </>
                       ) : station ? (
                         <>
-                          <div className="flex justify-center max-w-xs cursor-pointer" onClick={() => setShowOptions(true)}>
+                          <div
+                            className="flex justify-center max-w-xs cursor-pointer"
+                            onClick={() => setShowOptions(true)}
+                          >
                             <input
                               type="text"
                               id="myInput"
                               onChange={(e) => myFunction()}
                               placeholder={proName}
                               className="w-[250px] max-w-xs p-1 outline-none m-1 mb-2 bg-transparent border-b"
-                              
                             />
-                            <IoIosArrowDown
-                              className=" mt-3 "
-                            />
+                            <IoIosArrowDown className=" mt-3 " />
                           </div>
                           {showOptions && (
                             <ul
@@ -929,14 +948,18 @@ const Sidebar = ({
                                           setProjectCoordinates1(
                                             item.geometry.coordinates[0][0]
                                           );
-                                          setProjectName(item.properties.st_name_eng);
+                                          setProjectName(
+                                            item.properties.st_name_eng
+                                          );
                                           setProjectDescription(
                                             item.properties.description_eng
                                           );
                                           setprojectPosition(true);
                                           setAreaGov(false);
-                                          setProImage("https://geo1.esmrts.com/image/" +
-                                          item.properties.image1)
+                                          setProImage(
+                                            "https://geo1.esmrts.com/image/" +
+                                              item.properties.image1
+                                          );
                                         }}
                                       >
                                         {item.properties.st_name_eng}
@@ -963,14 +986,18 @@ const Sidebar = ({
                                           setProjectCoordinates1(
                                             item.geometry.coordinates[0][0]
                                           );
-                                          setProjectName(item.properties.st_name_eng);
+                                          setProjectName(
+                                            item.properties.st_name_eng
+                                          );
                                           setProjectDescription(
                                             item.properties.description_eng
                                           );
                                           setprojectPosition(true);
                                           setAreaGov(false);
-                                          setProImage("https://geo1.esmrts.com/image/" +
-                                          item.properties.image1)
+                                          setProImage(
+                                            "https://geo1.esmrts.com/image/" +
+                                              item.properties.image1
+                                          );
                                         }}
                                       >
                                         {item.properties.st_name_eng}
@@ -984,18 +1011,18 @@ const Sidebar = ({
                         </>
                       ) : mega ? (
                         <>
-                          <div className="flex justify-center max-w-xs cursor-pointer" onClick={() => setShowOptions(true)}>
+                          <div
+                            className="flex justify-center max-w-xs cursor-pointer"
+                            onClick={() => setShowOptions(true)}
+                          >
                             <input
                               type="text"
                               id="myInput"
                               onChange={(e) => myFunction()}
                               placeholder={proName}
                               className="w-[250px] max-w-xs p-1 outline-none m-1 mb-2 bg-transparent border-b"
-                              
                             />
-                            <IoIosArrowDown
-                              className=" mt-3 "
-                            />
+                            <IoIosArrowDown className=" mt-3 " />
                           </div>
                           {showOptions && (
                             <ul
@@ -1005,8 +1032,7 @@ const Sidebar = ({
                             >
                               {Mega.features.map((item) => {
                                 if (
-                                  item.properties.gov_id.toString() ===
-                                  govid
+                                  item.properties.gov_id.toString() === govid
                                 ) {
                                   return (
                                     <>
@@ -1025,14 +1051,18 @@ const Sidebar = ({
                                           setProjectCoordinates1(
                                             item.geometry.coordinates[0][0]
                                           );
-                                          setProjectName(item.properties.co_name_eng);
+                                          setProjectName(
+                                            item.properties.co_name_eng
+                                          );
                                           setProjectDescription(
                                             item.properties.description_eng
                                           );
                                           setprojectPosition(true);
                                           setAreaGov(false);
-                                          setProImage("https://geo1.esmrts.com/image/" +
-                                          item.properties.image1)
+                                          setProImage(
+                                            "https://geo1.esmrts.com/image/" +
+                                              item.properties.image1
+                                          );
                                         }}
                                       >
                                         {item.properties.co_name_eng}
@@ -1059,14 +1089,18 @@ const Sidebar = ({
                                           setProjectCoordinates1(
                                             item.geometry.coordinates[0][0]
                                           );
-                                          setProjectName(item.properties.co_name_eng);
+                                          setProjectName(
+                                            item.properties.co_name_eng
+                                          );
                                           setProjectDescription(
                                             item.properties.description_eng
                                           );
                                           setprojectPosition(true);
                                           setAreaGov(false);
-                                          setProImage("https://geo1.esmrts.com/image/" +
-                                          item.properties.image1)
+                                          setProImage(
+                                            "https://geo1.esmrts.com/image/" +
+                                              item.properties.image1
+                                          );
                                         }}
                                       >
                                         {item.properties.co_name_eng}
@@ -1113,16 +1147,14 @@ const Sidebar = ({
                   </button>
                 </div>
                 <div>
-                <button
-                  className="bg-[#9d3039] mt-1 p-1 w-[250px] mb-5 hover:bg-[#9d3039]/70 ease-in-out duration-200   "
-                  onClick={() => setInfo(true)}
-                >
-                  Need Help ?
-                </button>
+                  <button
+                    className="bg-[#9d3039] mt-1 p-1 w-[250px] mb-5 hover:bg-[#9d3039]/70 ease-in-out duration-200   "
+                    onClick={() => setInfo(true)}
+                  >
+                    Need Help ?
+                  </button>
+                </div>
               </div>
-              </div>
-
-              
 
               <div className="lg:flex justify-center gap-2 mt-2 text-md hidden ">
                 <a
@@ -1136,8 +1168,6 @@ const Sidebar = ({
                 All Rights Reserved 2021 © Ministry of Public Works
               </div>
             </ul>
-
-
           </div>
         </div>
       </div>

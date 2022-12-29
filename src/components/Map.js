@@ -155,7 +155,7 @@ export default function Map({
   }
 
   return (
-    <div className=" flex relative md:mt-[69.38px]" id="map">
+    <div className=" flex relative lg:mt-[69.38px]" id="map">
       <MapContainer
         center={[47.4818, 29.3117]}
         zoom={9}
