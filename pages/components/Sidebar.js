@@ -34,13 +34,17 @@ const Sidebar = ({
   setprojectPosition,
   setAreaGov,
   setProImage,
+  gov, 
+  setGov,
+  area, 
+  setArea
+
 }) => {
   const [constructionProject, setConstructionProject] = useState("");
   const [showOptions, setShowOptions] = useState(false);
   const [ShowAdvanced, setShowAdvanced] = useState(true);
   const [proName, setProName] = useState("Search..");
-  const [gov, setGov] = useState(false);
-  const [area, setArea] = useState(false);
+
 
   const slideLeft = () => {
     var slider = document.getElementById("slider");

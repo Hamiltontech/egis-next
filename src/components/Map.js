@@ -37,7 +37,10 @@ export default function Map({
   projectPosition,
   areaGov,
   proImage,
-}) {
+  govid,
+}) { 
+
+
   const apiKey =
     "AAPK1f12d3f9f7e0446b97bd5fad297b62dfNs64weAwjHl0BHUdtKX9GisBgUj4312WkhiIHfzTuTes26tENgAO6tBOGEErF-0r";
   var wmsLayerString =
@@ -62,24 +65,26 @@ export default function Map({
     popupAnchor: [0, -40],
   });
 
+
   function onEachConstruction(construction, layer) {
-    const COProjectName = construction.properties.co_name_eng;
-    const COProjectDescription = construction.properties.description_eng;
-    const COProjectImage1 = "https://geo1.esmrts.com/image/" + construction.properties.image1;
-    layer.bindPopup(
-      `
-      <div style="font-family: 'Tajawal', sans-serif;">
-      <div style=" width:100%; float:left; background-image: url('${COProjectImage1}'); background-size: cover; padding-top: 40px; padding-bottom: 40px; background-blend-mode: overlay; background-color: currentcolor;  image-repeat:no-repeat; margin-bottom:20px; font-weight:10px">
-       <h1 style='font-size: 18px; color: white; text-align:center; padding:20px; font-weight: 700;'> ${COProjectName} </h1>
+const COProjectName = construction.properties.co_name_eng;
+      const COProjectDescription = construction.properties.description_eng;
+      const COProjectImage1 = "https://geo1.esmrts.com/image/" + construction.properties.image1;
+      layer.bindPopup(
+        `
+        <div style="font-family: 'Tajawal', sans-serif;">
+        <div style=" width:100%; float:left; background-image: url('${COProjectImage1}'); background-size: cover; padding-top: 40px; padding-bottom: 40px; background-blend-mode: overlay; background-color: currentcolor;  image-repeat:no-repeat; margin-bottom:20px; font-weight:10px">
+         <h1 style='font-size: 18px; color: white; text-align:center; padding:20px; font-weight: 700;'> ${COProjectName} </h1>
+        </div>
+        <br></br>
+        <p style="text-align:center; padding:10px; margin-top:5px; font-weight: bold;"> ${COProjectDescription}</p>
+       <hr />
+       <p style="text-align:center; padding:10px; font-weight: bold;">${construction.geometry.coordinates[0]}, ${construction.geometry.coordinates[1]}</p>
+        <hr/>
       </div>
-      <br></br>
-      <p style="text-align:center; padding:10px; margin-top:5px; font-weight: bold;"> ${COProjectDescription}</p>
-     <hr />
-     <p style="text-align:center; padding:10px; font-weight: bold;">${construction.geometry.coordinates[0]}, ${construction.geometry.coordinates[1]}</p>
-      <hr/>
-    </div>
-      `
-    );
+        `
+      );
+      
   }
 
   function onEachSPF(spf, layer) {
@@ -116,12 +121,14 @@ export default function Map({
       if (areaGov === true) {
         map.flyTo([areazone, areazone1], map.getZoom());
         setPosition([areazone, areazone1]);
-      } else if(projectPosition === true) {
+      } else {
         setPosition([projectCoordinated, projectCoordinated1]);
         map.flyTo([projectCoordinated, projectCoordinated1], map.getZoom());
-      }else{
-        map.locate()
       }
+      // if(projectPosition === true) 
+      // else{
+      //   map.locate()
+      // }
     }, [projectCoordinated]);
 
     return position === null ? null : (
@@ -156,11 +163,13 @@ export default function Map({
     );
   }
 
+
+
   return (
     <div className=" flex relative lg:mt-[69.38px]" id="map">
       <MapContainer
         center={[47.4818, 29.3117]}
-        zoom={15}
+        zoom={9}
         scrollWheelZoom
         className="h-screen w-full"
       >

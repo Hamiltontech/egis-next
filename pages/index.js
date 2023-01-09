@@ -37,6 +37,8 @@ const [proImage, setProImage] = useState("")
   const [projectName,setProjectName] = useState("")
   const [projectDescription, setProjectDescription] = useState("")
   const [projectPosition, setprojectPosition] = useState(false);
+  const [gov, setGov] = useState(false);
+  const [area, setArea] = useState(false);
 
   useEffect(() => {
     Areas.features.map((item) => {
@@ -102,6 +104,10 @@ const [proImage, setProImage] = useState("")
             setAreaGov={setAreaGov}
             proImage={proImage}
             setProImage={setProImage}
+            gov={gov} 
+            setGov={setGov}
+            area={area} 
+            setArea={setArea}
           />
         </div>
         </div>
@@ -124,6 +130,9 @@ const [proImage, setProImage] = useState("")
             setAreaGov={setAreaGov}
             proImage={proImage}
             setProImage={setProImage}
+            govid={govid}
+            gov={gov} 
+            setGov={setGov}
             
           />
           <div className="hidden lg:block">
