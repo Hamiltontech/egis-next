@@ -221,7 +221,7 @@ const COProjectName = construction.properties.co_name_eng;
           </LayersControl.Overlay>
 
           <WMSTileLayer
-            url="http://geo1.esmrts.com/geoserver/ows?"
+            url="https://geo1.esmrts.com/geoserver/ows?"
             version="1.3.0"
             layers={wmsLayerString}
             format="image/png"
