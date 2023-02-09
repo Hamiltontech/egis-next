@@ -40,6 +40,8 @@ const [proImage, setProImage] = useState("")
   const [gov, setGov] = useState(false);
   const [area, setArea] = useState(false);
 
+
+
   useEffect(() => {
     Areas.features.map((item) => {
       if (item.properties.area_id.toString() === govid) {

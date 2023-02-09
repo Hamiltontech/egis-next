@@ -13,6 +13,11 @@
   
   }
 
+
+  /* .leaflet-top{ 
+    top: 10% !important;
+    position: fixed !important;
+  } */
   .leaflet-control-attribution.leaflet-control {
     display: none !important;
 }
@@ -202,4 +207,9 @@
         .leaflet-control-layers.leaflet-control.leaflet-control-layers-expanded {
             border-radius: 0px !important;
         }
+
+        .leaflet-top{ 
+            top: 10% !important;
+            position: fixed !important;
+          }
       }
